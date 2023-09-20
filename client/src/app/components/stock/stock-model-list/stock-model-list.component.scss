@@ -1,0 +1,32 @@
+.title {
+  font-weight: 700;
+  margin: 24px 0;
+}
+
+.model {
+  text-align: center;
+}
+
+.model[active="true"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 50px;
+  width: 168px;
+  background-color: var(--mc-primary-color);
+  color: #fff;
+  border-radius: 8px;
+}
+
+.model[active="false"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 50px;
+  width: 168px;
+  background-color: #fff;
+  border: 1px solid var(--mc-gray-300);
+  border-radius: 8px;
+}

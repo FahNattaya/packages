@@ -1,0 +1,16 @@
+.result-failed-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 24px 0;
+}
+
+.result-failed-container i {
+  font-size: 56px;
+  color: var(--mc-primary-color);
+}
+
+.result-failed-container p {
+  font-size: 24px;
+}

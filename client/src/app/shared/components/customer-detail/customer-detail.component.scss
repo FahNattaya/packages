@@ -1,0 +1,49 @@
+.navbar-container {
+  background-color: var(--mc-gray-100);
+  height: 58px;
+  color: var(--mc-text-secondary-color);
+  font-size: 16px;
+}
+
+img {
+  object-fit: contain;
+  margin-right: 8px;
+}
+
+.icon-user {
+  width: 29px !important;
+  height: 26px !important;
+  color: #9ede3e;
+  margin-right: 10px;
+}
+
+.txt-status {
+  width: 100%;
+  padding-left: 16px;
+  color: var(--mc-primary-color);
+}
+
+.customer-datail {
+  background-color: var(--mc-gray-100);
+  border-top: 1px solid var(--mc-gray-200);
+  color: var(--mc-text-secondary-color);
+  padding: 10px 0;
+}
+
+.datail > p {
+  margin-bottom: 6px;
+}
+
+.contact-condition {
+  color: #9ede3e;
+}
+
+.expended-icon {
+  color: var(--mc-text-secondary-color);
+  margin-left: 8px;
+}
+
+i {
+  font-size: 20px;
+  margin-left: 6px;
+}

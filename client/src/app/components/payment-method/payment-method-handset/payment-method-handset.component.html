@@ -1,0 +1,482 @@
+<div class="loading-container" *ngIf="isLoading">
+  <app-loading></app-loading>
+</div>
+
+<div
+  (click)="onToggleCollapse('productList')"
+  data-testid="collapse-payment-0"
+  *ngIf="!isLoading"
+>
+  <div class="d-flex justify-content-between">
+    <p data-testid="payment-list">รายการสินค้า</p>
+    <i class="bi" [ngClass]="getIconChevron('productList')"></i>
+  </div>
+  <div class="row mt-2">
+    <div class="col-6">
+      <ul>
+        <li>
+          {{ productDetail?.device?.name }}
+          {{ productDetail?.device?.colorName }}
+        </li>
+      </ul>
+    </div>
+    <div class="col-6">
+      <p class="text-end">{{ totalNetPrice | number : "1.2-2" }} บ.</p>
+    </div>
+  </div>
+  <div class="mt-2 order-summary">
+    <div class="row">
+      <div class="col-6"></div>
+      <div class="col-3">รวม</div>
+      <div class="col-3 text-end">
+        <p class="m-0">{{ totalNetPrice | number : "1.2-2" }} บ.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="collapse" [ngClass]="{ show: onCheckCollapse('productList') }">
+  <div class="ps-0 mx-0 my-3">เลือกช่องทางการชำระเงิน</div>
+  <div class="nav nav-tabs nav-fill px-0 my-3" role="tablist">
+    <button
+      class="button border-left col-6"
+      (click)="onChangeTab('online')"
+      data-bs-toggle="tab"
+      role="tab"
+      data-testid="onlinePayButton"
+      disabled
+    >
+      <div class="row">
+        <div class="col-2">
+          <img
+            src="assets/images/carbon_qr-code.png"
+            alt="icon-payment-qr-code"
+            class="icon-payment-qr-code"
+            data-testid="icon-payment-qr-code"
+          />
+        </div>
+        <div class="col-10">
+          <div class="choose-payment-txt-header">Online (จ่ายเต็มจำนวน)</div>
+          <div class="choose-payment-txt-content">
+            พร้อมเพย์ / Rabbit Line Pay
+          </div>
+        </div>
+      </div>
+    </button>
+    <button
+      class="button border-right col-6"
+      (click)="onChangeTab('counter')"
+      [ngClass]="{ active: selectedTab === 'counter' }"
+      data-bs-toggle="tab"
+      role="tab"
+      data-testid="creditCardButton"
+    >
+      <div class="row">
+        <div class="col-2">
+          <img
+            src="assets/images/icon-payment-counter.png"
+            alt="icon-payment-couter"
+            class="icon-payment-couter"
+            data-testid="icon-payment-couter"
+          />
+        </div>
+        <div class="col-10">
+          <div class="choose-payment-txt-header">Counter (เคาน์เตอร์)</div>
+          <div class="choose-payment-txt-content">
+            เครดิตการ์ด / เงินสด (เต็มจำนวน)
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+
+  <div class="my-0 mx-0">เลือกรูปแบบการชำระเงิน</div>
+
+  <ng-container *ngIf="selectedTab === 'online'">
+    online payment tab content
+  </ng-container>
+
+  <ng-container *ngIf="selectedTab === 'counter'">
+    <ng-container
+      *ngFor="
+        let paymentMethod of allPaymentData.payments;
+        let indexPayment = index
+      "
+    >
+      <div class="payment mb-2">
+        <div class="row">
+          <div class="col-9 px-0">
+            <div class="row mx-0 py-1">
+              <img
+                src="assets/images/{{ paymentMethod.methodName }}.png"
+                alt="icon-{{ paymentMethod.methodName }}-payment"
+                class="icon-credit-payment col-4"
+                data-testid="iconPaymentMethod"
+                data-testid="icon-payment-method"
+                (error)="assetsFileImageError(paymentMethod)"
+              />
+              <label class="choose-payment-txt-header d-flex col-8"
+                >: {{ paymentMethod.methodNameTh }}</label
+              >
+            </div>
+          </div>
+          <div class="col-3 px-2">
+            <div class="radio float-end">
+              <input
+                (click)="onPaymentMethodSelect(paymentMethod.method)"
+                id="rdoPayment-{{ paymentMethod.method }}"
+                name="radioPaymentMethod"
+                type="radio"
+                [attr.data-testid]="'rdoPaymentMethod-' + paymentMethod.method"
+              />
+              <label
+                for="rdoPayment-{{ paymentMethod.method }}"
+                class="radio-label"
+              ></label>
+            </div>
+          </div>
+        </div>
+        <ng-container *ngIf="selectedPaymentMethod === paymentMethod.method">
+          <div class="mx-3 my-1">
+            <ng-container
+              *ngIf="isPaymentMethodExist('installment', indexPayment)"
+            >
+              <div class="radio form-check form-check-inline px-0 mx-2 mb-2">
+                <input
+                  (click)="
+                    onPaymentTypeSelect('installment', indexPayment);
+                    onSelectBankFullPaid(indexPayment)
+                  "
+                  class="form-check-input"
+                  id="rdoInstallment{{ paymentMethod.method }}"
+                  name="radioPaymentType"
+                  type="radio"
+                  data-testid="rdo-installment-type"
+                />
+                <label
+                  for="rdoInstallment{{ paymentMethod.method }}"
+                  class="payment-txt-sub-content radio-label form-check-label d-flex"
+                  >ผ่อนชำระ</label
+                >
+              </div>
+            </ng-container>
+            <ng-container
+              *ngIf="isPaymentMethodExist('fullPaid', indexPayment)"
+            >
+              <div class="radio form-check form-check-inline px-0 mx-2 mb-2">
+                <input
+                  (click)="
+                    onPaymentTypeSelect('fullPaid', indexPayment);
+                    onSelectBankFullPaid(indexPayment)
+                  "
+                  class="form-check-input"
+                  id="rdoFullPaid{{ paymentMethod.method }}"
+                  name="radioPaymentType"
+                  type="radio"
+                  data-testid="rdo-fullpaid-type"
+                />
+                <label
+                  for="rdoFullPaid{{ paymentMethod.method }}"
+                  class="payment-txt-sub-content radio-label form-check-label d-flex"
+                  >เต็มจำนวน</label
+                >
+              </div>
+            </ng-container>
+          </div>
+          <ng-container *ngIf="selectedPaymentType === 'fullPaid'">
+            <div class="mx-3 my-1">
+              <ng-container
+                *ngFor="
+                  let paymentFullPaid of getPayment('fullPaid', indexPayment);
+                  let indexFullPaid = index
+                "
+              >
+                <div class="radio form-check form-check-inline px-0 mx-2 mb-2">
+                  <input
+                    (click)="
+                      onSelectBankFullPaid(indexFullPaid);
+                      onUpdateBank(
+                        paymentFullPaid.bankDescTh,
+                        paymentFullPaid.bankDescEn,
+                        paymentFullPaid.bankAbbr
+                      )
+                    "
+                    class="form-check-input"
+                    id="rdoFullPaidBank{{ paymentMethod.method }}{{
+                      indexFullPaid
+                    }}"
+                    name="radioPaymentBankFullPaid"
+                    type="radio"
+                    data-testid="rdo-fullpaid-bank"
+                  />
+                  <label
+                    for="rdoFullPaidBank{{ paymentMethod.method }}{{
+                      indexFullPaid
+                    }}"
+                    class="payment-txt-sub-content radio-label form-check-label d-flex"
+                  >
+                    <img
+                      style="width: 35px"
+                      [src]="paymentFullPaid.imageUrl"
+                      alt="{{ paymentFullPaid.bankAbbr }}"
+                      (error)="urlImageError(paymentFullPaid)"
+                      *ngIf="paymentFullPaid.imageUrl"
+                    />
+                    <p *ngIf="!paymentFullPaid.imageUrl">
+                      {{ paymentFullPaid.bankAbbr }}
+                    </p>
+                  </label>
+                </div>
+              </ng-container>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="selectedPaymentType === 'installment'">
+            <div class="mx-3 my-1">
+              <ng-container
+                *ngFor="
+                  let paymentInstallment of getPayment(
+                    'installment',
+                    indexPayment
+                  );
+                  let indexInstallment = index
+                "
+              >
+                <div class="radio form-check form-check-inline px-0 mx-2 mb-2">
+                  <input
+                    (click)="
+                      onSelectBankInstallment(indexInstallment);
+                      onUpdateBank(
+                        paymentInstallment.bankDescTh,
+                        paymentInstallment.bankDescEn,
+                        paymentInstallment.bankAbbr
+                      )
+                    "
+                    class="form-check-input"
+                    id="rdoInstallBank{{ paymentMethod.method }}{{
+                      indexInstallment
+                    }}"
+                    name="radioPaymentBankInstallment"
+                    type="radio"
+                    data-testid="rdo-intall-bank"
+                  />
+                  <label
+                    for="rdoInstallBank{{ paymentMethod.method }}{{
+                      indexInstallment
+                    }}"
+                    class="payment-txt-sub-content radio-label form-check-label d-flex"
+                  >
+                    <img
+                      class="image"
+                      [ngClass]="{ 'image-ls': paymentMethod.method === 'LS' }"
+                      [src]="paymentInstallment.imageUrl"
+                      alt="{{ paymentInstallment.bankAbbr }}"
+                      (error)="urlImageError(paymentInstallment)"
+                      *ngIf="paymentInstallment.imageUrl"
+                    />
+                    <p *ngIf="!paymentInstallment.imageUrl">
+                      {{ paymentInstallment.bankAbbr }}
+                    </p>
+                  </label>
+                </div>
+              </ng-container>
+            </div>
+            <div class="mx-3 my-1">
+              <ng-container *ngIf="currentInstallmentData.length != 0">
+                <ng-container
+                  *ngFor="
+                    let currentInstallment of currentInstallmentData;
+                    let indexCurrentInstallment = index
+                  "
+                >
+                  <div
+                    class="radio form-check form-check-inline px-0 mx-2 mb-2"
+                  >
+                    <input
+                      (click)="onSelectBankFullPaid(indexCurrentInstallment)"
+                      class="form-check-input"
+                      id="rdoInstallChoice{{ paymentMethod.method }}{{
+                        indexCurrentInstallment
+                      }}"
+                      name="radioPaymentInstallChoice"
+                      type="radio"
+                      data-testid="rdo-installment-choice"
+                    />
+                    <label
+                      for="rdoInstallChoice{{ paymentMethod.method }}{{
+                        indexCurrentInstallment
+                      }}"
+                      class="payment-txt-sub-content radio-label form-check-label d-flex"
+                    >
+                      <p *ngIf="flow === 'AIS'" class="mx-1">
+                        {{ currentInstallment.installmentRate }}%
+                      </p>
+                      <p>{{ currentInstallment.installmentTerms }} เดือน</p>
+                    </label>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="flow !== 'AIS' && !this.isBuyAppleCare">
+            <ng-container
+              *ngIf="
+                userPaymentSelected.method === 'LS' &&
+                paymentMethod.method === 'LS' &&
+                (selectedPaymentType === 'fullPaid' ||
+                  (selectedPaymentType === 'installment' &&
+                    userPaymentSelected?.installment?.installmentTerms))
+              "
+            >
+              <ng-container *ngIf="userPaymentSelected.installment">
+                <div class="row">
+                  <div class="col-2 inputs mt-2">
+                    <div class="row">
+                      <div class="col-auto">
+                        <label
+                          class="payment-txt-sub-content form-check-label"
+                          data-testid="contractNumber"
+                          >เลขที่สัญญา</label
+                        >
+                      </div>
+                      <div class="col">
+                        <p class="star-style">*</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <input
+                      class="form-control"
+                      type="text"
+                      [maxlength]="this.cardDigi"
+                      data-testid="contractNumberInput"
+                      [formControl]="contractNo"
+                      required
+                      (keyup)="onNextCondition()"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="row text-center mt-2"
+                  *ngIf="messageCheckLesing"
+                  [attr.data-testid]="'messageCheckLesing-' + indexPayment"
+                >
+                  <div
+                    *ngIf="!checkLesingAlertSuccess"
+                    class="alert alert-info"
+                  >
+                    {{ messageCheckLesing }}
+                  </div>
+                  <div
+                    *ngIf="checkLesingAlertSuccess"
+                    class="alert alert-success"
+                  >
+                    {{ messageCheckLesing }} <i class="bi bi-check2-circle"></i>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+            <ng-container
+              *ngIf="
+                userPaymentSelected.method === 'CC' &&
+                userPaymentSelected.bankAbbr !== '' &&
+                paymentMethod.method === 'CC' &&
+                (selectedPaymentType === 'fullPaid' ||
+                  (selectedPaymentType === 'installment' &&
+                    userPaymentSelected?.installment?.installmentTerms))
+              "
+            >
+              <form [formGroup]="creditCardNoForm">
+                <div class="row justify-content-around align-items-center">
+                  <div
+                    class="col inputs d-flex mt-2 align-items-center position-relative"
+                  >
+                    <label class="payment-txt-sub-content form-check-label"
+                      >เลขที่บัตรเครดิต</label
+                    >
+                    <p class="align-items-center star-style">*</p>
+                    <div class="col inputs d-flex mt-2 align-items-center">
+                      <div
+                        *ngFor="
+                          let n of creditCardNo;
+                          let creditCardNoIndex = index
+                        "
+                        [ngStyle]="{
+                          'margin-left': [4, 8, 12].includes(creditCardNoIndex)
+                            ? '20px'
+                            : '0px'
+                        }"
+                      >
+                        <input
+                          #otpInput
+                          class="p-1 text-center form-control rounded"
+                          type="number"
+                          onlyNumber
+                          [attr.data-testid]="'otpInput-' + creditCardNoIndex"
+                          maxlength="1"
+                          [formControlName]="creditCardNoIndex"
+                          (keydown)="focusNext($event, creditCardNoIndex)"
+                          [attr.type]="
+                            creditCardNoIndex >= 6 && creditCardNoIndex < 12
+                              ? 'text'
+                              : 'number'
+                          "
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <div
+                class="text-center mt-3"
+                *ngIf="messageCheckCreditCardNo"
+                [attr.data-testid]="'messageCheckCreditCardNo-' + indexPayment"
+              >
+                <div
+                  *ngIf="checkCreditCardAlertSuccess"
+                  class="alert alert-success"
+                >
+                  {{ messageCheckCreditCardNo }}
+                </div>
+                <div
+                  *ngIf="!checkCreditCardAlertSuccess"
+                  class="alert alert-danger"
+                >
+                  {{ messageCheckCreditCardNo }}
+                </div>
+              </div>
+            </ng-container>
+            <ng-container
+              *ngIf="
+                selectedPaymentMethod === 'CA' ||
+                (selectedPaymentMethod !== 'CA' &&
+                  userPaymentSelected.bankAbbr !== '' &&
+                  (selectedPaymentType === 'fullPaid' ||
+                    (selectedPaymentType === 'installment' &&
+                      userPaymentSelected?.installment?.installmentTerms)))
+              "
+            >
+              <div class="row mt-2">
+                <div class="col-2 inputs mt-2">
+                  <label
+                    class="payment-txt-sub-content form-check-label"
+                    style="width: 15%"
+                    data-testid="remarkContractNumber"
+                    >หมายเหตุ</label
+                  >
+                </div>
+                <div class="col">
+                  <input
+                    class="form-control"
+                    type="text"
+                    [formControl]="remark"
+                    data-testid="remarkContractNumberInput"
+                  />
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>

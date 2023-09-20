@@ -1,0 +1,44 @@
+{
+    "users": {
+        "aisshop1": {
+            "username": "chiraphr",
+            "password": "MyChannel#Aug23"
+        },
+        "aisshop2": {
+            "username": "sasithth",
+            "password": "MyChannel#Aug23"
+        },
+        "asp": {
+            "username": "atidtayw",
+            "password": "MyChannel#Aug23"
+        },
+        "easyplus": {
+            "username": "ASPOTO39",
+            "password": "MyChannel#Aug23"
+        },
+        "telewiz": {
+            "username": "TCGNSS03",
+            "password": "MyChannel#Aug23"
+        },
+        "jaymart": {
+            "username": "JMTMCS21",
+            "password": "MyChannel#Aug23"
+        },
+        "localretailchain": {
+            "username": "",
+            "password": ""
+        },
+        "aisbuddyexclusive": {
+            "username": "",
+            "password": ""
+        },
+        "pcbrandshop": {
+            "username": "",
+            "password": ""
+        },
+        "nolocation": {
+            "username": "saowanes",
+            "password": "MyChannel#Aug23"
+        }
+    }
+}

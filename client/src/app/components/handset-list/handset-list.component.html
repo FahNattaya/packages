@@ -1,0 +1,106 @@
+<ng-container >
+  <div
+  class="empty-state"
+  data-testid="emptyBrand"
+  *ngIf="handsetListDisplay.length === 0 && !isSearching"
+>
+  กรุณาเลือกแบรนด์
+</div>
+<div
+  class="model-list-container"
+  *ngIf="handsetListDisplay.length > 0 && !isSearching"
+  data-testid="modelContinuousList"
+>
+  <div
+    class="model-list"
+    *ngFor="let groupModel of handsetListDisplay; let groupModelIndex = index"
+  >
+    <div class="title-model">แบรนด์: {{ groupModel.brand }}</div>
+    <div *ngIf="groupModel.products.length === 0">
+      ไม่พบข้อมูล '{{ searchValue }}'
+    </div>
+    <app-continuous-scrolling
+      [isTwoRows]="true"
+      [isHiddenScrolling]="groupModel.products.length <= 4"
+    >
+      <div *ngFor="let model of groupModel.products; let modelIndex = index">
+        <div
+          class="model-group"
+          [attr.active]="checkModelIsSelected(model.name)"
+          [attr.data-testid]="'model-' + model.name"
+          (click)="onSelectGroupModel(model, false)"
+        >
+          {{ model?.name }}
+        </div>
+      </div>
+    </app-continuous-scrolling>
+  </div>
+</div>
+<div
+  class="empty-state"
+  data-testid="emptyModel"
+  *ngIf="handsetListDisplay.length > 0 && selectedModels.length === 0 && !isSearching"
+>
+  กรุณาเลือกโมเดล
+</div>
+</ng-container>
+<div class="action-container" *ngIf="!isLoading">
+  <app-loading></app-loading>
+</div>
+    <div data-testid="empty-search" class="title-model empty-state" *ngIf="selectedModels.length === 0 && isLoading && isSearching">
+      ไม่พบข้อมูล '{{ searchWord }}'
+    </div>
+
+<div class="product-container" *ngIf="selectedModels.length > 0">
+  <div
+    class="product-list-container"
+    *ngFor="let modelSelected of selectedModels"
+    [attr.data-testid]="'productList-' + modelSelected.name"
+  >
+    <h3 data-testid="titleProduct" class="title-product">
+      {{ modelSelected.name }}
+    </h3>
+    <app-continuous-scrolling
+      [isShowScrollBar]="modelSelected.subProducts.length >= 4"
+    >
+      <div
+        class="product"
+        *ngFor="let product of modelSelected.subProducts"
+        [attr.data-testid]="'product-' + product.name"
+        [ngClass]="{ selected: dataSubProduct.name === product.name }"
+        (click)="onSelectProduct(modelSelected, product)"
+      >
+        <div class="product-name">
+          {{ product.name }}
+        </div>
+        <div class="product-image">
+          <img
+            src="{{ product.image }}"
+            [attr.data-testid]="'productImage-' + product.name"
+            *ngIf="product.image"
+          />
+          <div class="empty-image" *ngIf="!product.image">ไม่มีรูปสินค้า</div>
+        </div>
+        <div
+          class="product-color-container"
+          [attr.data-testid]="'productColor-' + product.name"
+        >
+          <ng-container *ngFor="let color of product.colors">
+            <div
+              *ngIf="color.colorCode"
+              class="product-color"
+              [style.background-color]="'#' + color.colorCode"
+            ></div>
+          </ng-container>
+        </div>
+        <div>
+          ราคา
+          <span class="product-price">{{
+            product.normalPrice.max | number
+          }}</span>
+          บาท
+        </div>
+      </div>
+    </app-continuous-scrolling>
+  </div>
+</div>

@@ -1,0 +1,103 @@
+<layout
+  [backUrl]="backPageUrl"
+  [isShowFooter]="true"
+  titlePageName="เช็คสิทธิ"
+  [isShowIconCart]="true"
+  [isShowCustomerDetail]="false"
+>
+  <div>
+    <div class="container-md">
+      <div class="row">
+        <div
+          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center mt-4"
+        >
+          <div class="txt-header">กรุณาระบุข้อมูลของท่าน</div>
+        </div>
+        <div
+          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center mt-3"
+        >
+          <div class="txt-content">เสียบบัตรประชาชน</div>
+        </div>
+        <div
+          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center mt-3"
+        >
+          <img src="assets/images/Group5.jpg" class="img-fluid" />
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center mt-4">
+        <div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+          <hr />
+        </div>
+        <div
+          class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 d-flex justify-content-center"
+        >
+          <div class="txt-content">หรือ</div>
+        </div>
+        <div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+          <hr />
+        </div>
+      </div>
+      <div class="row">
+        <div
+          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center mt-4"
+        >
+          <div class="txt-header">กรอกเอกสารแสดงตนอื่นๆ</div>
+        </div>
+        <div
+          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center mt-3"
+        >
+          <div class="txt-content">
+            ( หมายเลขโทรศัพท์ / เลขบัตรประชาชน / เลขพาสปอร์ต / เลขบัตรต่างด้าว )
+          </div>
+        </div>
+        <div class="col-7 col-sm-7 col-md-7 col-lg-6 col-xl-6 mx-auto mt-4">
+          <input
+            type="text"
+            class="form-control custom-input"
+            data-testid="identityNumber"
+            [formControl]="mobileNoAndIdNoInput"
+          />
+        </div>
+        <div style="margin-top: 20px; text-align: center">
+          <p *ngIf="errorMessage" class="error-msg-mnp">{{ errorMessage }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div footer-layout>
+    <div class="button">
+      <app-button-next
+        [ngClass]="{ disabled: activeNextBtn }"
+        type="button"
+        (click)="checkInputFormat()"
+      ></app-button-next>
+    </div>
+  </div>
+</layout>
+
+<div
+  *ngIf="progress && progress > 0 && progress <= 100"
+  class="modal fade show modal-fade"
+  [style.display]="'block'"
+  tabindex="-1"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">
+          กำลังโหลดข้อมูล...
+        </h5>
+      </div>
+      <div class="modal-body">
+        <div class="progress">
+          <div
+            class="progress-bar"
+            role="progressbar"
+            [style.width]="progress + '%'"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="header-layout">
+  <app-navbar
+    [backUrl]="backUrl"
+    [titlePageName]="titlePageName"
+    [isShowIconCart]="isShowIconCart"
+    [isShowIconBack]="isShowIconBack"
+  ></app-navbar>
+  <app-customer-detail
+    [customer]="customer"
+    *ngIf="isShowCustomerDetail"
+  ></app-customer-detail>
+</div>
+<div
+  class="body-layout"
+  [ngClass]="{ footer: isShowFooter, customer: isShowCustomerDetail }"
+>
+  <ng-content></ng-content>
+</div>
+<div class="footer-layout" *ngIf="isShowFooter">
+  <ng-content select="[footer-layout]"></ng-content>
+</div>

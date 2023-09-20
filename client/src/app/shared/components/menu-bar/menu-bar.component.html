@@ -1,0 +1,81 @@
+<div class="menu-bar-container">
+  <div
+    class="location-bar"
+    *ngIf="isShowLocation"
+    data-testid="barLocationName"
+  >
+    {{ locationName }}
+  </div>
+  <div class="container-md menu-bar">
+    <div class="search-bar" *ngIf="isShowSearch">
+      <input
+        type="{{ typeInputSearch }}"
+        data-testid="searchBarInput"
+        placeholder="ค้นหา"
+        [formControl]="searchValue"
+        [value]="searchValue.value"
+        (keydown)="onEnter($event)"
+      />
+      <div
+      *ngIf="searchValue.value"
+      class="clear-text-button"
+      data-testid="clear-text-button"
+      role="button"
+      (click)="clearSearchInput()"
+    >
+      <span class="bi bi-x"></span>
+    </div>
+      <button data-testid="searchBarButton" (click)="onSearch()">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+    <div class="category-bar" *ngIf="isShowCategory">
+      <div>
+        <button class="active" data-testid="handsetCategory">
+          <i class="bi bi-phone"></i>Handset
+        </button>
+      </div>
+      <div>
+        <button data-testid="accessoryCategory">
+          <i class="bi bi-controller"></i>Accessory
+        </button>
+      </div>
+      <div>
+        <button data-testid="gadgetCategory">
+          <i class="bi bi-sim"></i>Gadget
+        </button>
+      </div>
+      <div>
+        <button data-testid="iotCategory"><i class="bi bi-sim"></i>IOT</button>
+      </div>
+      <div>
+        <button data-testid="simCategory"><i class="bi bi-sim"></i>SIM</button>
+      </div>
+    </div>
+  </div>
+  <div class="container-md filter-bar" *ngIf="isShowFilter">
+    <div class="d-flex align-items-center">
+      <button
+        class="imei-button"
+        data-testid="scanImeiButton"
+        *ngIf="(OutChannelSalesData$ | async) === 'Y'"
+        (click)="onScanImei()"
+      >
+        Scan IMEI
+      </button>
+      <div class="imei-code" data-testid="imeiCode" *ngIf="imeiCode">
+        IMEI: {{ imeiCode }}
+      </div>
+    </div>
+    <div class="filter-panel">
+      <span>เปรียบเทียบ</span>
+      <img src="assets/images/Compare.png" />
+      <span class="divider">&#124;</span>
+      <span>มุมมอง</span>
+      <select class="filter-panel-dropdown" data-testid="dropdownList">
+        <option data-testid="dropwdownBrand">Brand/Model</option>
+        <option data-testid="dropwdownCampaign">Campaign</option>
+      </select>
+    </div>
+  </div>
+</div>

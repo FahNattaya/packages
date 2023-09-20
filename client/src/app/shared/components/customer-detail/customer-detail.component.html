@@ -1,0 +1,76 @@
+<nav class="navbar navbar-container">
+  <div class="container-md" *ngIf="customer">
+    <div class="d-flex">
+      <img
+        src="assets/images/icon-user.png"
+        class="icon-user"
+        data-testid="buttonUser"
+      />
+      <div class="d-flex align-items-center">
+        <span data-testid="customerName">
+          {{ customer.title }}{{ customerName }}
+        </span>
+        <i
+          [ngClass]="enable.customerName ? 'bi bi-eye' : 'bi bi-eye-slash'"
+          (click)="onEnableEye('customerName')"
+          data-testid="enableEyeCustomerName"
+        ></i>
+      </div>
+    </div>
+    <div class="d-flex">
+      <div class="d-flex">
+        <img
+          *ngIf="chargeTypeIcons[customer.chargeType]"
+          [src]="chargeTypeIcons[customer.chargeType]"
+          data-testid="logoAis"
+          alt="logo-ais"
+        />
+        <div class="d-flex align-items-center">
+          <div data-testid="textPhoneNumber">
+            {{ mobileNo }}
+          </div>
+          <i
+            [ngClass]="enable.mobileNo ? 'bi bi-eye' : 'bi bi-eye-slash'"
+            (click)="onEnableEye('mobileNo')"
+            data-testid="enableEyeMobileNo"
+          ></i>
+        </div>
+      </div>
+      <div
+        class="d-flex"
+        (click)="onExpend(expended)"
+        data-testid="expendDetail"
+      >
+        <li class="txt-status" data-testid="textStatus">
+          {{ customer.subscriptionState }}
+        </li>
+        <i
+          class="bi expended-icon"
+          [ngClass]="expended ? 'bi-chevron-up' : 'bi-chevron-down'"
+          data-testid="expendDetailIcon"
+        ></i>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="collapse customer-datail" [ngClass]="{ show: expended }">
+  <div class="container-md">
+    <div class="d-flex datail">
+      <p>Service Year :&nbsp;</p>
+      <p data-testid="serviceYearMessage">{{ serviceYearMessage }}</p>
+    </div>
+    <div class="d-flex datail">
+      <p>AIS Blacklist :&nbsp;</p>
+      <p data-testid="blackListMessage">{{ blackListMessage }}</p>
+    </div>
+    <div class="d-flex datail">
+      <p>1ID2CONTACT :&nbsp;</p>
+      <p [attr.data-testid]="dataTestIdContact">
+        {{ contactUsedMsg }}&nbsp;<span class="contact-condition">{{
+          contactUsableMsg
+        }}</span>
+      </p>
+    </div>
+  </div>
+</div>

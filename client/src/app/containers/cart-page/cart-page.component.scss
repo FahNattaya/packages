@@ -1,0 +1,24 @@
+.button-summary {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 30px 0;
+}
+
+.offcanvas.offcanvas-bottom {
+  height: 100%;
+}
+
+.offcanvas-header {
+  background: var(--mc-primary-color);
+  color: #fff;
+}
+
+.offcanvas-header > i {
+  font-size: 24px;
+}
+
+.offcanvas-title {
+  font-weight: 600;
+}

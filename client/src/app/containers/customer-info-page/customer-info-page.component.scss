@@ -1,0 +1,36 @@
+.txt-success{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 43px;
+  color: var(--mc-primary-color);
+}
+
+.txt-content {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 43px;
+  color: var(--mc-text-primary-color);
+}
+
+.customer-info{
+   display: flex;
+   border: solid 1px var(--mc-primary-color);
+   border-radius: 10px;
+   justify-content: space-between;
+   align-items: center;
+   background-color: var(--mc-gray-50);
+   padding: 2rem;
+   font-size: 18px;
+   margin-top: 5rem;
+   color: var(--mc-text-primary-color);
+}
+
+.customer-info i{
+    font-size: 6rem;
+    color: var(--mc-primary-color);
+    border: 4px solid var(--mc-primary-color);
+    border-radius: 10px;
+    padding: 5px;
+}

@@ -1,0 +1,48 @@
+<div class="seller-container">
+  <h6 data-testid="labelSellerInfo">ข้อมูลผู้ขาย</h6>
+  <div class="seller-form">
+    <div class="row align-items-center">
+      <form [formGroup]="sellerForm">
+        <div class="row">
+          <div class="col-3">
+            <div class="seller-info">
+              <h6 data-testid="labelSellerUsername">พนักงานขาย</h6>
+            </div>
+          </div>
+          <div class="col-9">
+            <div class="seller-info" data-testid="sellerUsername">
+              {{ tokenData?.username }}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <div class="seller-info">
+              <h6 data-testid="labelSellerLocationName">สาขา</h6>
+            </div>
+          </div>
+          <div class="col-9">
+            <div class="seller-info" data-testid="sellerLocationName">
+              {{ tokenData?.locationCode }} {{ locationName }}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <div class="seller-info">
+              <h6 data-testid="labelSellerCodeInput">รหัสพนักงานขาย</h6>
+            </div>
+          </div>
+          <div class="col-9">
+            <input
+              class="input-code-seller"
+              data-testid="sellerCodeInput"
+              formControlName="sellerCode"
+            />
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

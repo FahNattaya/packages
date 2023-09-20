@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"module": "commonjs",
+		"outDir": "dist/service",
+		"strict": true,
+		"esModuleInterop": true,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"baseUrl": "./",
+		"paths": {
+			"test/*": ["../test/*"]
+		}
+		// "typeRoots": ["../../node_modules/@types", "types.d.ts"],
+		// "types": ["node", "express"]
+	},
+	"include": ["src/**/*", "phantomjs-prebuilt", "phantomjs-prebuilt.d.ts"],
+	"exclude": ["dist", "src/**/*.spec.ts", "src/**/*.test.ts", "phantomjs-prebuilt", "other-excluded-folder"]
+}

@@ -1,0 +1,26 @@
+.custom-container {
+  align-items: center;
+  justify-content: center;
+}
+
+.font-number-title {
+  font-size: 20px;
+}
+
+.custom-pill {
+  margin-right: 30px;
+  margin-top: 10px;
+  border: 1px solid var(--mc-primary-color);
+  background-color: #ffffff;
+  color: black;
+
+  &.active {
+    border: 1px solid var(--mc-primary-color);
+    background-color: #f7fff1;
+    color: black;
+  }
+}
+
+.pill-img {
+  margin-right: 5px;
+}

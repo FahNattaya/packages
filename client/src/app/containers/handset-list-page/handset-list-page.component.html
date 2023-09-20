@@ -1,0 +1,60 @@
+<layout
+  [backUrl]="backPageUrl"
+  [isShowFooter]="true"
+  titlePageName="รายการสินค้า"
+>
+  <menu-bar (search)="onSearch($event)" (imei)="onScanImei($event)"></menu-bar>
+  <div class="container-md">
+    <app-brands-product [isReComponent]="isReComponent"></app-brands-product>
+    <app-handset-list
+      [searchValue]="searchValue"
+      (onSelectedSubProduct)="onSelectProduct($event)"
+      (onDisableButtonNext)="onDisabledButtonNext($event)"
+    ></app-handset-list>
+  </div>
+  <div footer-layout>
+    <app-button-next
+      type="button"
+      (click)="onNext()"
+      [ngClass]="{ disabled: disabledButtonNext }"
+    ></app-button-next>
+  </div>
+</layout>
+
+<div
+  #imeiModal
+  class="modal fade modal-fade"
+  id="imeiModal"
+  tabindex="-1"
+  aria-labelledby="imeiModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header header-imei-model">
+        <div class="col-2"></div>
+        <div class="col-8">
+          <h5 class="modal-title text-center" data-testid="textImeiTitle">
+            หน้า Scan IMEI
+          </h5>
+        </div>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          data-testid="closeModelImei"
+          (click)="closeImeiModal()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div data-testid="formImei">
+          <app-form-imei
+            [resetForm]="resetImeiForm"
+            (imeiSubscription)="onSetImeiSubscription($event)"
+          ></app-form-imei>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

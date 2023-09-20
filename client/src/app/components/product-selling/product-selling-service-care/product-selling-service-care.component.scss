@@ -1,0 +1,202 @@
+.button-color-green {
+  background-color: var(--mc-primary-color);
+  color: white;
+}
+
+.scroll-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.scroll-item {
+  display: inline-block;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.apple-price {
+  display: flex;
+  justify-content: center;
+}
+.ais-color {
+  color: var(--mc-primary-color);
+}
+.card {
+  border-width: 2px !important;
+  border-color: transparent !important;
+}
+
+.card[active="true"] {
+  border-color: var(--mc-primary-color) !important;
+}
+
+.text-content-guardianship {
+  margin-left: 15px;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.center-item {
+  display: flex;
+  align-items: center;
+}
+
+.row-service {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.text-header {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.text-header-secondary {
+  font-size: 18px;
+  font-weight: 500;
+  color: #38454c;
+}
+
+.text-centent {
+  font-size: 16px;
+  color: #657884;
+}
+
+.price-apple-care {
+  font-size: 28px;
+}
+
+.color-price {
+  color: #ee4d8e;
+}
+
+.c-header {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  justify-content: center;
+  height: 86px;
+  background-color: #f3f3f3;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.c-header-protection {
+  background-color: #f3f3f3;
+  text-align: center;
+  min-height: 150px;
+  white-space: normal;
+}
+
+.c-header-conditon {
+  background-color: #f3f3f3;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  min-height: 160px !important;
+  white-space: normal;
+}
+
+.c-header-heightOfServiceType {
+  background-color: #fafafa;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  min-height: 190px !important;
+  white-space: normal;
+}
+
+.c-header-service-charge {
+  background-color: #f3f3f3;
+  min-height: 80px;
+}
+
+.c-header-payment {
+  background-color: #f3f3f3;
+  min-height: 40px;
+}
+
+.text-protection {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.icon-mobile {
+  height: 71px;
+}
+
+.icon-protection {
+  width: 28px;
+  height: 28px;
+}
+
+.form-check {
+  margin-left: -24px;
+}
+
+.ignore-reason {
+  margin-left: -24px;
+}
+
+input[type="radio"] {
+  appearance: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--mc-gray-color);
+  margin-top: 3px;
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+input[type="radio"]:checked {
+  background-color: var(--mc-primary-color);
+}
+
+input[type="radio"]:checked::before {
+  color: white !important;
+  content: "\2713" !important;
+  font-size: 14px;
+  font-family: system-ui;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+}
+
+.icon-expanded {
+  position: absolute;
+  right: 15px;
+}
+
+.text-condition {
+  font-size: 14px;
+  color: #ff8266;
+}
+
+.alert-text {
+  font-size: 22px;
+  align-items: center;
+}
+
+.footer-care {
+  display: flex;
+  flex-direction: column;
+}
+
+.package-card {
+  display: flex;
+  align-items: flex-start;
+}
+
+.service-care-price {
+  color: var(--mc-magenta);
+}
+
+.package-list-details {
+  margin-bottom: 16px;
+}

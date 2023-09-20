@@ -1,0 +1,1513 @@
+{
+    "_id": "646f2ddbf3c7832b6031c6b0",
+    "data": {
+        "statusCode": "20000",
+        "statusDesc": "SUCCESS",
+        "brand": "APPLE",
+        "model": "IPHONEXSM256",
+        "color": "SILVER",
+        "location": "1",
+        "productType": "DEVICE",
+        "productSubtype": "HANDSET",
+        "priceOptions": [
+            {
+                "campaignId": "1090818",
+                "campaignName": "AIS Best Buy 3M",
+                "campaignDesc": "AIS Best Buy 3M",
+                "imageUrl": "https://sit-admin-cpc.cdc.ais.th/admin-fe/assets/files/images/04fadc6c-f891-45cf-b6a7-3e212e8afd69.jpg",
+                "channels": [
+                    "ASP",
+                    "AIS"
+                ],
+                "minimumPackagePrice": "0",
+                "maximumPackagePrice": "99999",
+                "packageKeyRef": null,
+                "minimumPackageOnTopPrice": "0",
+                "maximumPackageOnTopPrice": "0",
+                "packageOnTopKeyRef": null,
+                "conditionCode": "CONDITION_1",
+                "promotionFlag": "Y",
+                "publish": true,
+                "priority": "0",
+                "allowedAddToCart": true,
+                "code": "AIS_BEST_BUY_3M_TEST_INSTALLMENT_AND_COMPENSATION",
+                "priceType": "PROMOTION",
+                "maximumContract": "0",
+                "price": "24500",
+                "freeGoods": [],
+                "customerGroups": [
+                    {
+                        "name": "ลูกค้าปัจจุบัน",
+                        "code": "MC004",
+                        "flowId": "000"
+                    }
+                ],
+                "minimumPromotionPrice": "23500",
+                "maximumPromotionPrice": "23500",
+                "minimumNormalPrice": "24500",
+                "maximumNormalPrice": "24500",
+                "minimumAdvancePay": "0",
+                "maximumAdvancePay": "0",
+                "privileges": [
+                    {
+                        "privilegeId": "2018-00054",
+                        "privilegeName": "Best Buy 3M TP21124531_1_*999*03*9# - AIS Best Buy Handset Special Price for Postpaid Existing Customers",
+                        "privilegeDesc": "Best Buy 3M TP21124531_1_*999*03*9# - AIS Best Buy Handset Special Price for Postpaid Existing Customers",
+                        "ussdCode": "*999*03*9#",
+                        "minimumPackageOnTopPrice": "0",
+                        "maximumPackageOnTopPrice": "0",
+                        "packageKeyRef": null,
+                        "packageOnTopKeyRef": null,
+                        "channels": [
+                            "ASP",
+                            "AIS"
+                        ],
+                        "customerGroups": [
+                            {
+                                "name": "ลูกค้าปัจจุบัน",
+                                "code": "MC004",
+                                "flowId": "000"
+                            }
+                        ],
+                        "minimumNormalPrice": "24500",
+                        "maximumNormalPrice": "24500",
+                        "minimumPromotionPrice": "23500",
+                        "maximumPromotionPrice": "23500",
+                        "minimumAdvancePay": "0",
+                        "maximumAdvancePay": "0",
+                        "maximumContract": "0",
+                        "freeGoods": [],
+                        "trades": [
+                            {
+                                "tradeProductId": "146444",
+                                "tradeNo": "TP21124531",
+                                "tradeName": "AIS Best Buy 3M (Test Installment and Compensation)",
+                                "tradeDesc": "[MC] AIS Best Buy 3M APRIL 2019",
+                                "normalPrice": 24500,
+                                "promotionPrice": "23500",
+                                "contractId": null,
+                                "limitContract": null,
+                                "durationContract": "0",
+                                "advancePay": {
+                                    "tradeAirtimeId": null,
+                                    "amount": 0,
+                                    "installmentFlag": "N",
+                                    "matAirtime": null,
+                                    "description": null,
+                                    "payAdvanceGroupId": null,
+                                    "promotions": []
+                                },
+                                "priceType": "PROMOTION",
+                                "ussdCode": "*999*03*9#",
+                                "packageKeyRef": null,
+                                "packageOnTopKeyRef": null,
+                                "priceDiscount": 1000,
+                                "focCode": "0",
+                                "focStartDate": null,
+                                "focEndDate": null,
+                                "focMinPackage": null,
+                                "focMaxPackage": null,
+                                "focContractId": null,
+                                "focDurationContract": "",
+                                "productType": "DEVICE",
+                                "productSubtype": "HANDSET",
+                                "maximumPackage": null,
+                                "minimumPackage": null,
+                                "maximumPackageOnTop": null,
+                                "minimumPackageOnTop": null,
+                                "serviceLockHs": null,
+                                "simLock": null,
+                                "criterias": [
+                                    {
+                                        "chargeType": [
+                                            "Post-paid",
+                                            "Pre-paid"
+                                        ]
+                                    },
+                                    {
+                                        "criteria": [
+                                            "Existing"
+                                        ]
+                                    },
+                                    {
+                                        "instanceName": [
+                                            "3G"
+                                        ]
+                                    },
+                                    {
+                                        "target": [
+                                            "AIS"
+                                        ]
+                                    }
+                                ],
+                                "campaignCode": "0022",
+                                "campaignName": "Best Buy 3M",
+                                "pointGroupId": null,
+                                "maxReceiveFreeGoods": null,
+                                "requireCheckQuota": "N",
+                                "installmentOnBillAmount": null,
+                                "installmentOnBillTerm": null,
+                                "minimumPriceLength": null,
+                                "maximumPriceLength": null,
+                                "priceGroups": [
+                                    {
+                                        "priceType": "EUP",
+                                        "price": 24500
+                                    }
+                                ],
+                                "discount": {
+                                    "tradeDiscountId": "145171",
+                                    "type": "B",
+                                    "value": "7.00",
+                                    "amount": "1000",
+                                    "specialType": null,
+                                    "specialAmount": 0,
+                                    "discountExcludeVat": 934.58,
+                                    "discountIncludeVat": 1000,
+                                    "tradePriceExcludeVat": null,
+                                    "tradePriceIncludeVat": null,
+                                    "installmentPartnerFlag": null,
+                                    "option": "1",
+                                    "payAdvanceGroupId": null
+                                },
+                                "payments": [
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "CA",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "DC",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "PB",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "RL",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    }
+                                ],
+                                "banks": [],
+                                "freeGoods": [],
+                                "matCode": "undefined",
+                                "channels": [
+                                    "ASP",
+                                    "AIS"
+                                ],
+                                "tradeChannels": [
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "ALL",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "ALL",
+                                        "saleChannel": "AISBUDDY",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    },
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "ALL",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "ALL",
+                                        "saleChannel": "AISBUDDYEXCLUSIVE",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    },
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "ALL",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "ALL",
+                                        "saleChannel": "ALL AIS",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    },
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "ALL",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "ALL",
+                                        "saleChannel": "ARS",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    },
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "ALL",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "ALL",
+                                        "saleChannel": "ASP",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    },
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "ALL",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "ALL",
+                                        "saleChannel": "BRANDSHOP",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    },
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "ALL",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "ALL",
+                                        "saleChannel": "LOCALRETAILCHAIN",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    },
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "ALL",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "ALL",
+                                        "saleChannel": "RETAILCHAIN",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    },
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "ALL",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "ALL",
+                                        "saleChannel": "TELEWIZ",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    }
+                                ],
+                                "customerGroups": [
+                                    {
+                                        "name": "ลูกค้าปัจจุบัน",
+                                        "code": "MC004",
+                                        "flowId": "000"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "requireCheckBlacklistAcrossOper": "N"
+            },
+            {
+                "campaignId": "1090792",
+                "campaignName": "AIS Best Buy 12M (Test Installment and Compensation)",
+                "campaignDesc": null,
+                "imageUrl": "",
+                "channels": [
+                    "ASP",
+                    "AIS"
+                ],
+                "minimumPackagePrice": "699",
+                "maximumPackagePrice": "99999",
+                "packageKeyRef": "8UZfqMT8bItbwuzxILsmQHkpO4EnliZCHg9ANU7IzsAqBjnnfot2QawD0TNBeJk6YrQEjuIsiYaiufsh",
+                "minimumPackageOnTopPrice": "0",
+                "maximumPackageOnTopPrice": "0",
+                "packageOnTopKeyRef": null,
+                "conditionCode": "CONDITION_1",
+                "promotionFlag": "Y",
+                "publish": true,
+                "priority": "0",
+                "allowedAddToCart": true,
+                "code": "AIS_BEST_BUY_12M_TEST_INSTALLMENT_AND_COMPENSATION",
+                "priceType": "PROMOTION",
+                "maximumContract": "12",
+                "price": "24500",
+                "freeGoods": [],
+                "customerGroups": [
+                    {
+                        "name": "ลูกค้าปัจจุบัน",
+                        "code": "MC004",
+                        "flowId": "000"
+                    }
+                ],
+                "minimumPromotionPrice": "21500",
+                "maximumPromotionPrice": "21500",
+                "minimumNormalPrice": "24500",
+                "maximumNormalPrice": "24500",
+                "minimumAdvancePay": "0",
+                "maximumAdvancePay": "0",
+                "privileges": [
+                    {
+                        "privilegeId": "2019-00021",
+                        "privilegeName": "Best Buy Contract EX 12 TP21124530_1_*999*035*6# - โครงการ Exclusive deal สำหรับลูกค้าปัจจุบันรายเดือน มีอายุบริการ 12 เดือนขึ้นไป แพ็กเกจ 699 บาท",
+                        "privilegeDesc": "Best Buy Contract EX 12 TP21124530_1_*999*035*6# - โครงการ Exclusive deal สำหรับลูกค้าปัจจุบันรายเดือน มีอายุบริการ 12 เดือนขึ้นไป แพ็กเกจ 699 บาท",
+                        "ussdCode": "*999*035*6#",
+                        "minimumPackagePrice": "699",
+                        "minimumPackageOnTopPrice": "0",
+                        "maximumPackageOnTopPrice": "0",
+                        "packageKeyRef": "8UZfqMT8bItbwuzxILsmQHkpO4EnliZCHg9ANU7IzsAqBjnnfot2QawD0TNBeJk6YrQEjuIsiYaiufsh",
+                        "packageOnTopKeyRef": null,
+                        "channels": [
+                            "ASP",
+                            "AIS"
+                        ],
+                        "customerGroups": [
+                            {
+                                "name": "ลูกค้าปัจจุบัน",
+                                "code": "MC004",
+                                "flowId": "000"
+                            }
+                        ],
+                        "minimumNormalPrice": "24500",
+                        "maximumNormalPrice": "24500",
+                        "minimumPromotionPrice": "21500",
+                        "maximumPromotionPrice": "21500",
+                        "minimumAdvancePay": "0",
+                        "maximumAdvancePay": "0",
+                        "maximumContract": "12",
+                        "freeGoods": [],
+                        "trades": [
+                            {
+                                "tradeProductId": "146435",
+                                "tradeNo": "TP21124530",
+                                "tradeName": "AIS Best Buy 12M (Test Installment and Compensation)",
+                                "tradeDesc": "for existing cutomers .",
+                                "normalPrice": 24500,
+                                "promotionPrice": "21500",
+                                "contractId": "72",
+                                "limitContract": 10,
+                                "durationContract": "12",
+                                "advancePay": {
+                                    "tradeAirtimeId": null,
+                                    "amount": 0,
+                                    "installmentFlag": "N",
+                                    "matAirtime": null,
+                                    "description": null,
+                                    "payAdvanceGroupId": null,
+                                    "promotions": []
+                                },
+                                "priceType": "PROMOTION",
+                                "ussdCode": "*999*035*6#",
+                                "packageKeyRef": "8UZfqMT8bItbwuzxILsmQHkpO4EnliZCHg9ANU7IzsAqBjnnfot2QawD0TNBeJk6YrQEjuIsiYaiufsh",
+                                "packageOnTopKeyRef": null,
+                                "priceDiscount": 3000,
+                                "focCode": "0",
+                                "focStartDate": null,
+                                "focEndDate": null,
+                                "focMinPackage": null,
+                                "focMaxPackage": null,
+                                "focContractId": null,
+                                "focDurationContract": "",
+                                "productType": "DEVICE",
+                                "productSubtype": "HANDSET",
+                                "maximumPackage": null,
+                                "minimumPackage": 699,
+                                "maximumPackageOnTop": null,
+                                "minimumPackageOnTop": null,
+                                "serviceLockHs": null,
+                                "simLock": null,
+                                "criterias": [
+                                    {
+                                        "chargeType": [
+                                            "Post-paid"
+                                        ]
+                                    },
+                                    {
+                                        "criteria": [
+                                            "Existing"
+                                        ]
+                                    },
+                                    {
+                                        "instanceName": [
+                                            "3G"
+                                        ]
+                                    },
+                                    {
+                                        "target": [
+                                            "AIS"
+                                        ]
+                                    }
+                                ],
+                                "campaignCode": "0005",
+                                "campaignName": "Best Buy Contract EX 12",
+                                "pointGroupId": null,
+                                "maxReceiveFreeGoods": null,
+                                "requireCheckQuota": "N",
+                                "installmentOnBillAmount": null,
+                                "installmentOnBillTerm": null,
+                                "minimumPriceLength": null,
+                                "maximumPriceLength": null,
+                                "priceGroups": [
+                                    {
+                                        "priceType": "EUP",
+                                        "price": 24500
+                                    }
+                                ],
+                                "discount": {
+                                    "tradeDiscountId": "145162",
+                                    "type": "B",
+                                    "value": "7.00",
+                                    "amount": "3000",
+                                    "specialType": null,
+                                    "specialAmount": 0,
+                                    "discountExcludeVat": 2803.74,
+                                    "discountIncludeVat": 3000,
+                                    "tradePriceExcludeVat": null,
+                                    "tradePriceIncludeVat": null,
+                                    "installmentPartnerFlag": null,
+                                    "option": "1",
+                                    "payAdvanceGroupId": null
+                                },
+                                "payments": [
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "CA",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "DC",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "PB",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "RL",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "V1",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    }
+                                ],
+                                "banks": [],
+                                "freeGoods": [],
+                                "matCode": "undefined",
+                                "channels": [
+                                    "ASP",
+                                    "AIS"
+                                ],
+                                "tradeChannels": [
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "ALL",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "ALL",
+                                        "saleChannel": "AISBUDDY",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    },
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "ALL",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "ALL",
+                                        "saleChannel": "AISBUDDYEXCLUSIVE",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    },
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "ALL",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "ALL",
+                                        "saleChannel": "ALL AIS",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    },
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "ALL",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "ALL",
+                                        "saleChannel": "ARS",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    },
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "ALL",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "ALL",
+                                        "saleChannel": "ASP",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    },
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "ALL",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "ALL",
+                                        "saleChannel": "BRANDSHOP",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    },
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "ALL",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "ALL",
+                                        "saleChannel": "LOCALRETAILCHAIN",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    },
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "ALL",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "ALL",
+                                        "saleChannel": "RETAILCHAIN",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    },
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "ALL",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "ALL",
+                                        "saleChannel": "TELEWIZ",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    }
+                                ],
+                                "customerGroups": [
+                                    {
+                                        "name": "ลูกค้าปัจจุบัน",
+                                        "code": "MC004",
+                                        "flowId": "000"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "requireCheckBlacklistAcrossOper": "N"
+            },
+            {
+                "campaignId": "1090383",
+                "campaignName": "Handset Trading",
+                "campaignDesc": "Handset Trading",
+                "imageUrl": "",
+                "channels": [
+                    "ASP",
+                    "AIS"
+                ],
+                "minimumPackagePrice": "0",
+                "maximumPackagePrice": "99999",
+                "packageKeyRef": null,
+                "minimumPackageOnTopPrice": "0",
+                "maximumPackageOnTopPrice": "0",
+                "packageOnTopKeyRef": null,
+                "conditionCode": null,
+                "promotionFlag": "Y",
+                "publish": true,
+                "priority": "99",
+                "allowedAddToCart": true,
+                "code": "HANDSET_TRADING",
+                "priceType": "PROMOTION",
+                "maximumContract": "0",
+                "price": "24500",
+                "freeGoods": [
+                    {
+                        "tradeFreegoodsId": "117542",
+                        "code": "52000012",
+                        "tradeNo": "TP19041844",
+                        "name": "พวงกุญแจน้องอุ่นใจNew 5 นิ้ว",
+                        "qty": "1"
+                    },
+                    {
+                        "tradeFreegoodsId": "117543",
+                        "code": "52000013",
+                        "tradeNo": "TP19041844",
+                        "name": "ตุ๊กตาน้องอุ่นใจNew 16 นิ้ว",
+                        "qty": "1"
+                    }
+                ],
+                "customerGroups": [
+                    {
+                        "code": "MC005",
+                        "flowId": "000",
+                        "name": "ลูกค้าซื้อเครื่องเปล่า"
+                    }
+                ],
+                "minimumPromotionPrice": "21000",
+                "maximumPromotionPrice": "22500",
+                "minimumNormalPrice": "24500",
+                "maximumNormalPrice": "24500",
+                "minimumAdvancePay": "0",
+                "maximumAdvancePay": "0",
+                "privileges": [
+                    {
+                        "privilegeId": "OTHER",
+                        "privilegeName": "Handset Trading TP19041845__ - ",
+                        "privilegeDesc": "Handset Trading TP19041845__ - ",
+                        "ussdCode": null,
+                        "minimumPackageOnTopPrice": "0",
+                        "maximumPackageOnTopPrice": "0",
+                        "packageKeyRef": null,
+                        "packageOnTopKeyRef": null,
+                        "channels": [
+                            "ASP",
+                            "AIS"
+                        ],
+                        "customerGroups": [
+                            {
+                                "code": "MC005",
+                                "flowId": "000",
+                                "name": "ลูกค้าซื้อเครื่องเปล่า"
+                            }
+                        ],
+                        "minimumNormalPrice": "24500",
+                        "maximumNormalPrice": "24500",
+                        "minimumPromotionPrice": "21000",
+                        "maximumPromotionPrice": "21000",
+                        "minimumAdvancePay": "0",
+                        "maximumAdvancePay": "0",
+                        "maximumContract": "0",
+                        "freeGoods": [
+                            {
+                                "tradeFreegoodsId": "118023",
+                                "code": "52002741",
+                                "tradeNo": "TP19041845",
+                                "name": "ร่มพับ 3 ตอน 6 ช่อง ดีไซน์อุ่นใจ_สีเขียว",
+                                "qty": "1"
+                            },
+                            {
+                                "tradeFreegoodsId": "118024",
+                                "code": "52002745",
+                                "tradeNo": "TP19041845",
+                                "name": "ถุงผ้าไฟเบอร์ใส่มือถือดีไซน์อุ่นใจสีขาว",
+                                "qty": "1"
+                            }
+                        ],
+                        "trades": [
+                            {
+                                "tradeProductId": "134710",
+                                "tradeNo": "TP19041845",
+                                "tradeName": "[MC] Handset Trading Discount + Free Goods",
+                                "tradeDesc": "Handset Trading Discount + Free Good",
+                                "normalPrice": 24500,
+                                "promotionPrice": "21000",
+                                "contractId": null,
+                                "limitContract": null,
+                                "durationContract": "0",
+                                "advancePay": {
+                                    "tradeAirtimeId": null,
+                                    "amount": 0,
+                                    "installmentFlag": "N",
+                                    "matAirtime": null,
+                                    "description": null,
+                                    "payAdvanceGroupId": null,
+                                    "promotions": []
+                                },
+                                "priceType": "PROMOTION",
+                                "ussdCode": null,
+                                "packageKeyRef": null,
+                                "packageOnTopKeyRef": null,
+                                "priceDiscount": 3500,
+                                "focCode": "0",
+                                "focStartDate": null,
+                                "focEndDate": null,
+                                "focMinPackage": null,
+                                "focMaxPackage": null,
+                                "focContractId": null,
+                                "focDurationContract": "",
+                                "productType": "DEVICE",
+                                "productSubtype": "HANDSET",
+                                "maximumPackage": null,
+                                "minimumPackage": null,
+                                "maximumPackageOnTop": null,
+                                "minimumPackageOnTop": null,
+                                "serviceLockHs": null,
+                                "simLock": null,
+                                "criterias": [
+                                    {
+                                        "target": [
+                                            "All"
+                                        ]
+                                    }
+                                ],
+                                "campaignCode": "0011",
+                                "campaignName": "Handset Trading",
+                                "pointGroupId": null,
+                                "maxReceiveFreeGoods": 1,
+                                "requireCheckQuota": "N",
+                                "installmentOnBillAmount": null,
+                                "installmentOnBillTerm": null,
+                                "minimumPriceLength": null,
+                                "maximumPriceLength": null,
+                                "priceGroups": [
+                                    {
+                                        "priceType": "EUP",
+                                        "price": 24500
+                                    }
+                                ],
+                                "discount": {
+                                    "tradeDiscountId": "128772",
+                                    "type": "B",
+                                    "value": "7.00",
+                                    "amount": "3500",
+                                    "specialType": null,
+                                    "specialAmount": 0,
+                                    "discountExcludeVat": 3271.03,
+                                    "discountIncludeVat": 3500,
+                                    "tradePriceExcludeVat": null,
+                                    "tradePriceIncludeVat": null,
+                                    "installmentPartnerFlag": null,
+                                    "option": null,
+                                    "payAdvanceGroupId": null
+                                },
+                                "payments": [
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "CA",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "DC",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "PB",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "RL",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    }
+                                ],
+                                "banks": [],
+                                "freeGoods": [
+                                    {
+                                        "tradeFreegoodsId": "118023",
+                                        "code": "52002741",
+                                        "tradeNo": "TP19041845",
+                                        "name": "ร่มพับ 3 ตอน 6 ช่อง ดีไซน์อุ่นใจ_สีเขียว",
+                                        "qty": "1"
+                                    },
+                                    {
+                                        "tradeFreegoodsId": "118024",
+                                        "code": "52002745",
+                                        "tradeNo": "TP19041845",
+                                        "name": "ถุงผ้าไฟเบอร์ใส่มือถือดีไซน์อุ่นใจสีขาว",
+                                        "qty": "1"
+                                    }
+                                ],
+                                "matCode": "undefined",
+                                "channels": [
+                                    "ASP",
+                                    "AIS"
+                                ],
+                                "tradeChannels": [
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "CB",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "กรุงเทพ",
+                                        "saleChannel": "ALL AIS",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    },
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "CB",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "กรุงเทพ",
+                                        "saleChannel": "ASP",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    }
+                                ],
+                                "customerGroups": [
+                                    {
+                                        "code": "MC005",
+                                        "flowId": "000",
+                                        "name": "ลูกค้าซื้อเครื่องเปล่า"
+                                    }
+                                ]
+                            },
+                            {
+                                "tradeProductId": "134710",
+                                "tradeNo": "TP19041845",
+                                "tradeName": "[MC] Handset Trading Discount + Free Goods",
+                                "tradeDesc": "Handset Trading Discount + Free Good",
+                                "normalPrice": 24500,
+                                "promotionPrice": "21000",
+                                "contractId": null,
+                                "limitContract": null,
+                                "durationContract": "0",
+                                "advancePay": {
+                                    "tradeAirtimeId": null,
+                                    "amount": 0,
+                                    "installmentFlag": "N",
+                                    "matAirtime": null,
+                                    "description": null,
+                                    "payAdvanceGroupId": null,
+                                    "promotions": []
+                                },
+                                "priceType": "PROMOTION",
+                                "ussdCode": null,
+                                "packageKeyRef": null,
+                                "packageOnTopKeyRef": null,
+                                "priceDiscount": 3500,
+                                "focCode": "0",
+                                "focStartDate": null,
+                                "focEndDate": null,
+                                "focMinPackage": null,
+                                "focMaxPackage": null,
+                                "focContractId": null,
+                                "focDurationContract": "",
+                                "productType": "DEVICE",
+                                "productSubtype": "HANDSET",
+                                "maximumPackage": null,
+                                "minimumPackage": null,
+                                "maximumPackageOnTop": null,
+                                "minimumPackageOnTop": null,
+                                "serviceLockHs": null,
+                                "simLock": null,
+                                "criterias": [
+                                    {
+                                        "target": [
+                                            "All"
+                                        ]
+                                    }
+                                ],
+                                "campaignCode": "0011",
+                                "campaignName": "Handset Trading",
+                                "pointGroupId": null,
+                                "maxReceiveFreeGoods": 1,
+                                "requireCheckQuota": "N",
+                                "installmentOnBillAmount": null,
+                                "installmentOnBillTerm": null,
+                                "minimumPriceLength": null,
+                                "maximumPriceLength": null,
+                                "priceGroups": [
+                                    {
+                                        "priceType": "EUP",
+                                        "price": 24500
+                                    }
+                                ],
+                                "discount": {
+                                    "tradeDiscountId": "128772",
+                                    "type": "B",
+                                    "value": "7.00",
+                                    "amount": "3500",
+                                    "specialType": null,
+                                    "specialAmount": 0,
+                                    "discountExcludeVat": 3271.03,
+                                    "discountIncludeVat": 3500,
+                                    "tradePriceExcludeVat": null,
+                                    "tradePriceIncludeVat": null,
+                                    "installmentPartnerFlag": null,
+                                    "option": null,
+                                    "payAdvanceGroupId": null
+                                },
+                                "payments": [
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "CC",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "DC",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "PB",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "RL",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    }
+                                ],
+                                "banks": [],
+                                "freeGoods": [
+                                    {
+                                        "tradeFreegoodsId": "118023",
+                                        "code": "52002741",
+                                        "tradeNo": "TP19041845",
+                                        "name": "ร่มพับ 3 ตอน 6 ช่อง ดีไซน์อุ่นใจ_สีเขียว",
+                                        "qty": "1"
+                                    },
+                                    {
+                                        "tradeFreegoodsId": "118024",
+                                        "code": "52002745",
+                                        "tradeNo": "TP19041845",
+                                        "name": "ถุงผ้าไฟเบอร์ใส่มือถือดีไซน์อุ่นใจสีขาว",
+                                        "qty": "1"
+                                    }
+                                ],
+                                "matCode": "undefined",
+                                "channels": [
+                                    "ASP",
+                                    "AIS"
+                                ],
+                                "tradeChannels": [
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "CB",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "กรุงเทพ",
+                                        "saleChannel": "ALL AIS",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    },
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "CB",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "กรุงเทพ",
+                                        "saleChannel": "ASP",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    }
+                                ],
+                                "customerGroups": [
+                                    {
+                                        "code": "MC005",
+                                        "flowId": "000",
+                                        "name": "ลูกค้าซื้อเครื่องเปล่า"
+                                    }
+                                ]
+                            },
+                            {
+                                "tradeProductId": "134710",
+                                "tradeNo": "TP19041845",
+                                "tradeName": "[MC] Handset Trading Discount + Free Goods",
+                                "tradeDesc": "Handset Trading Discount + Free Good",
+                                "normalPrice": 24500,
+                                "promotionPrice": "21000",
+                                "contractId": null,
+                                "limitContract": null,
+                                "durationContract": "0",
+                                "advancePay": {
+                                    "tradeAirtimeId": null,
+                                    "amount": 0,
+                                    "installmentFlag": "N",
+                                    "matAirtime": null,
+                                    "description": null,
+                                    "payAdvanceGroupId": null,
+                                    "promotions": []
+                                },
+                                "priceType": "PROMOTION",
+                                "ussdCode": null,
+                                "packageKeyRef": null,
+                                "packageOnTopKeyRef": null,
+                                "priceDiscount": 3500,
+                                "focCode": "0",
+                                "focStartDate": null,
+                                "focEndDate": null,
+                                "focMinPackage": null,
+                                "focMaxPackage": null,
+                                "focContractId": null,
+                                "focDurationContract": "",
+                                "productType": "DEVICE",
+                                "productSubtype": "HANDSET",
+                                "maximumPackage": null,
+                                "minimumPackage": null,
+                                "maximumPackageOnTop": null,
+                                "minimumPackageOnTop": null,
+                                "serviceLockHs": null,
+                                "simLock": null,
+                                "criterias": [
+                                    {
+                                        "target": [
+                                            "All"
+                                        ]
+                                    }
+                                ],
+                                "campaignCode": "0011",
+                                "campaignName": "Handset Trading",
+                                "pointGroupId": null,
+                                "maxReceiveFreeGoods": 1,
+                                "requireCheckQuota": "N",
+                                "installmentOnBillAmount": null,
+                                "installmentOnBillTerm": null,
+                                "minimumPriceLength": null,
+                                "maximumPriceLength": null,
+                                "priceGroups": [
+                                    {
+                                        "priceType": "EUP",
+                                        "price": 24500
+                                    }
+                                ],
+                                "discount": {
+                                    "tradeDiscountId": "128772",
+                                    "type": "B",
+                                    "value": "7.00",
+                                    "amount": "3500",
+                                    "specialType": null,
+                                    "specialAmount": 0,
+                                    "discountExcludeVat": 3271.03,
+                                    "discountIncludeVat": 3500,
+                                    "tradePriceExcludeVat": null,
+                                    "tradePriceIncludeVat": null,
+                                    "installmentPartnerFlag": null,
+                                    "option": null,
+                                    "payAdvanceGroupId": null
+                                },
+                                "payments": [
+                                    {
+                                        "cardType": "MASTER",
+                                        "method": "CC",
+                                        "installId": 283,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "MASTER",
+                                        "method": "CC",
+                                        "installId": 339,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "CC",
+                                        "installId": 283,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "CC",
+                                        "installId": 339,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "VISA",
+                                        "method": "CC",
+                                        "installId": 283,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "VISA",
+                                        "method": "CC",
+                                        "installId": 339,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "DC",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "PB",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "RL",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    }
+                                ],
+                                "banks": [
+                                    {
+                                        "name": "กรุงศรีอยุธยา จำกัด (มหาชน)",
+                                        "abb": "BAY",
+                                        "imageUrl": "https://sit-admin-cpc.cdc.ais.th/CPC-FE-WEB/api/contents/upload/BAY_BAY.png",
+                                        "installment": "0%  6 เดือน ( 6 M)",
+                                        "balloonMonths": 0,
+                                        "remark": null
+                                    },
+                                    {
+                                        "name": "กรุงเทพ จำกัด (มหาชน)",
+                                        "abb": "BBL",
+                                        "imageUrl": "https://sit-admin-cpc.cdc.ais.th/CPC-FE-WEB/api/contents/upload/BBL_BBL.png",
+                                        "installment": "0%  6 เดือน ( 6 M)",
+                                        "balloonMonths": 0,
+                                        "remark": null
+                                    }
+                                ],
+                                "freeGoods": [
+                                    {
+                                        "tradeFreegoodsId": "118023",
+                                        "code": "52002741",
+                                        "tradeNo": "TP19041845",
+                                        "name": "ร่มพับ 3 ตอน 6 ช่อง ดีไซน์อุ่นใจ_สีเขียว",
+                                        "qty": "1"
+                                    },
+                                    {
+                                        "tradeFreegoodsId": "118024",
+                                        "code": "52002745",
+                                        "tradeNo": "TP19041845",
+                                        "name": "ถุงผ้าไฟเบอร์ใส่มือถือดีไซน์อุ่นใจสีขาว",
+                                        "qty": "1"
+                                    }
+                                ],
+                                "matCode": "undefined",
+                                "channels": [
+                                    "ASP",
+                                    "AIS"
+                                ],
+                                "tradeChannels": [
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "CB",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "กรุงเทพ",
+                                        "saleChannel": "ALL AIS",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    },
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "CB",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "กรุงเทพ",
+                                        "saleChannel": "ASP",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    }
+                                ],
+                                "customerGroups": [
+                                    {
+                                        "code": "MC005",
+                                        "flowId": "000",
+                                        "name": "ลูกค้าซื้อเครื่องเปล่า"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "privilegeId": "OTHER",
+                        "privilegeName": "Handset Trading TP19041844__ - ",
+                        "privilegeDesc": "Handset Trading TP19041844__ - ",
+                        "ussdCode": null,
+                        "minimumPackageOnTopPrice": "0",
+                        "maximumPackageOnTopPrice": "0",
+                        "packageKeyRef": null,
+                        "packageOnTopKeyRef": null,
+                        "channels": [
+                            "ASP",
+                            "AIS"
+                        ],
+                        "customerGroups": [
+                            {
+                                "code": "MC005",
+                                "flowId": "000",
+                                "name": "ลูกค้าซื้อเครื่องเปล่า"
+                            }
+                        ],
+                        "minimumNormalPrice": "24500",
+                        "maximumNormalPrice": "24500",
+                        "minimumPromotionPrice": "22500",
+                        "maximumPromotionPrice": "22500",
+                        "minimumAdvancePay": "0",
+                        "maximumAdvancePay": "0",
+                        "maximumContract": "0",
+                        "freeGoods": [
+                            {
+                                "tradeFreegoodsId": "117542",
+                                "code": "52000012",
+                                "tradeNo": "TP19041844",
+                                "name": "พวงกุญแจน้องอุ่นใจNew 5 นิ้ว",
+                                "qty": "1"
+                            },
+                            {
+                                "tradeFreegoodsId": "117543",
+                                "code": "52000013",
+                                "tradeNo": "TP19041844",
+                                "name": "ตุ๊กตาน้องอุ่นใจNew 16 นิ้ว",
+                                "qty": "1"
+                            }
+                        ],
+                        "trades": [
+                            {
+                                "tradeProductId": "139851",
+                                "tradeNo": "TP19041844",
+                                "tradeName": "[MC] Handset Trading Installment + Free Goods",
+                                "tradeDesc": "Handset Trading Installment + FreeGood",
+                                "normalPrice": 24500,
+                                "promotionPrice": "22500",
+                                "contractId": null,
+                                "limitContract": null,
+                                "durationContract": "0",
+                                "advancePay": {
+                                    "tradeAirtimeId": null,
+                                    "amount": 0,
+                                    "installmentFlag": "N",
+                                    "matAirtime": null,
+                                    "description": null,
+                                    "payAdvanceGroupId": null,
+                                    "promotions": []
+                                },
+                                "priceType": "PROMOTION",
+                                "ussdCode": null,
+                                "packageKeyRef": null,
+                                "packageOnTopKeyRef": null,
+                                "priceDiscount": 2000,
+                                "focCode": "0",
+                                "focStartDate": null,
+                                "focEndDate": null,
+                                "focMinPackage": null,
+                                "focMaxPackage": null,
+                                "focContractId": null,
+                                "focDurationContract": "",
+                                "productType": "DEVICE",
+                                "productSubtype": "HANDSET",
+                                "maximumPackage": null,
+                                "minimumPackage": null,
+                                "maximumPackageOnTop": null,
+                                "minimumPackageOnTop": null,
+                                "serviceLockHs": null,
+                                "simLock": null,
+                                "criterias": [
+                                    {
+                                        "target": [
+                                            "All"
+                                        ]
+                                    }
+                                ],
+                                "campaignCode": "0011",
+                                "campaignName": "Handset Trading",
+                                "pointGroupId": null,
+                                "maxReceiveFreeGoods": 2,
+                                "requireCheckQuota": "N",
+                                "installmentOnBillAmount": null,
+                                "installmentOnBillTerm": null,
+                                "minimumPriceLength": null,
+                                "maximumPriceLength": null,
+                                "priceGroups": [
+                                    {
+                                        "priceType": "EUP",
+                                        "price": 24500
+                                    }
+                                ],
+                                "discount": {
+                                    "tradeDiscountId": "139127",
+                                    "type": "B",
+                                    "value": "7.00",
+                                    "amount": "2000",
+                                    "specialType": null,
+                                    "specialAmount": 0,
+                                    "discountExcludeVat": 1869.16,
+                                    "discountIncludeVat": 2000,
+                                    "tradePriceExcludeVat": null,
+                                    "tradePriceIncludeVat": null,
+                                    "installmentPartnerFlag": null,
+                                    "option": null,
+                                    "payAdvanceGroupId": null
+                                },
+                                "payments": [
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "CA",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "AB",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "DC",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "PB",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    },
+                                    {
+                                        "cardType": "OTHER",
+                                        "method": "RL",
+                                        "installId": null,
+                                        "balloonMonths": 0
+                                    }
+                                ],
+                                "banks": [],
+                                "freeGoods": [
+                                    {
+                                        "tradeFreegoodsId": "117542",
+                                        "code": "52000012",
+                                        "tradeNo": "TP19041844",
+                                        "name": "พวงกุญแจน้องอุ่นใจNew 5 นิ้ว",
+                                        "qty": "1"
+                                    },
+                                    {
+                                        "tradeFreegoodsId": "117543",
+                                        "code": "52000013",
+                                        "tradeNo": "TP19041844",
+                                        "name": "ตุ๊กตาน้องอุ่นใจNew 16 นิ้ว",
+                                        "qty": "1"
+                                    }
+                                ],
+                                "matCode": "undefined",
+                                "channels": [
+                                    "ASP",
+                                    "AIS"
+                                ],
+                                "tradeChannels": [
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "ALL",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "ALL",
+                                        "saleChannel": "ALL AIS",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    },
+                                    {
+                                        "locationCode": null,
+                                        "partnerCode": null,
+                                        "locationCodePartner": null,
+                                        "region": "ALL",
+                                        "locType": null,
+                                        "locSubtype": null,
+                                        "province": "ALL",
+                                        "saleChannel": "ASP",
+                                        "shopType": "ALL",
+                                        "shopTypeGroup": "ALL",
+                                        "publicName": "ALL"
+                                    }
+                                ],
+                                "customerGroups": [
+                                    {
+                                        "code": "MC005",
+                                        "flowId": "000",
+                                        "name": "ลูกค้าซื้อเครื่องเปล่า"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "requireCheckBlacklistAcrossOper": "N"
+            }
+        ]
+    }
+}

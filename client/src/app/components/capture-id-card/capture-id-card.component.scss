@@ -1,0 +1,36 @@
+.capture-container {
+  padding: 24px 0;
+}
+
+.title {
+  font-weight: 600;
+  padding-bottom: 20px;
+  margin-bottom: 32px;
+  text-align: center;
+  border-bottom: 1px solid var(--mc-gray-200);
+}
+
+.capture-button {
+  margin-top: 32px;
+  padding: 8px;
+  width: 180px;
+  height: 60px;
+  font-size: 26px;
+  background: var(--mc-primary-color);
+  color: var(--mc-text-primary-color);
+  border: none;
+  border-radius: 8px;
+}
+
+.capture-button i {
+  margin-right: 8px;
+}
+
+.permission-denied {
+  text-align: center;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

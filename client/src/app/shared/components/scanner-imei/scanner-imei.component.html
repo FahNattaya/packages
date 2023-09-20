@@ -1,0 +1,10 @@
+<ng-container *ngIf="isStartScan">
+  <ng-container>
+    <ngx-barcode-scanner
+      [(value)]="imeiCode"
+      [codes]="['code_128', 'ean', 'upc', 'upc_e', 'ean_8']"
+      [errorThreshold]="0.1"
+      (valueChange)="onScanChange()"
+    ></ngx-barcode-scanner>
+  </ng-container>
+</ng-container>

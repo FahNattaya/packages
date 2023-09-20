@@ -1,0 +1,324 @@
+<div class="loading-container" *ngIf="isLoading">
+  <app-loading></app-loading>
+</div>
+<ng-container *ngIf="!isLoading">
+  <form [formGroup]="formMobileCare">
+    <div class="row-service">
+      <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 scroll-item px-0">
+        <div class="card card-fixed-protection">
+          <div class="c-header center-item p-2" data-bs-toggle="collapse" data-bs-target="#collapseMobileCare"
+            [attr.aria-expanded]="isCollapsed ? 'true' : 'false'" data-testid="buttonService"
+            aria-controls="collapseMobileCare" (click)="onChangeExpanded(isCollapsed)">
+            <div class="text-header">บริการความ<br />คุ้มครอง</div>
+            <div class="icon-expanded">
+              <i class="bi" [ngClass]="isCollapsed ? 'bi-chevron-down' : 'bi-chevron-up'"
+                data-testid="icon-expanded"></i>
+            </div>
+          </div>
+          <div class="collapse" id="collapseMobileCare" [ngClass]="{ show: isCollapsed }">
+            <div class="c-header-protection p-2 mt-2">
+              <div class="text-header-secondary text-start">ความคุ้มครอง</div>
+              <div class="text-content-guardianship text-centent">
+                &#8226; Hardware & Sofeware
+              </div>
+              <div class="text-content-guardianship text-centent">
+                &#8226; เครื่องเสียหายจากอุบัติเหตุ
+              </div>
+              <div class="text-content-guardianship text-centent">
+                &#8226; เครื่องหาย
+              </div>
+            </div>
+            <div class="c-header-conditon p-2 mt-2">
+              <div class="text-header-secondary text-start">
+                เงื่อนไขการใช้บริการ
+              </div>
+            </div>
+            <div class="c-header-payment p-2 mt-2">
+              <div class="text-header-secondary text-start">
+                วิธีการชำระเงิน
+              </div>
+            </div>
+            <div class="c-header-heightOfServiceType p-2 mt-2">
+              <div class="text-header-secondary text-start">ค่าบริการ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-container" *ngIf="mobileCareData$">
+        <ng-container *ngFor="let item of mobileCareData$; let indexService = index">
+          <div class="col-8 col-sm-8 col-md-8 col-lg-6 col-xl-6 scroll-item px-0">
+            <div class="card" [attr.active]="indexService == currentService">
+              <div class="c-header p-2" data-bs-toggle="collapse" data-bs-target="#collapseMobileCare"
+                [attr.aria-expanded]="isCollapsed ? 'true' : 'false'" aria-controls="collapseMobileCare"
+                [attr.data-testid]="'buttonService' + indexService" (click)="onChangeExpanded(isCollapsed)">
+                <img *ngIf="item.productType === 'AIS Care Plus'" class="icon-mobile"
+                  src="assets/images/ais-care-plus.png" />
+                <img *ngIf="item.productType === 'AppleCare+'" class="icon-mobile" src="assets/images/apple-care.png" />
+                <div class="icon-expanded">
+                  <i class="bi" [ngClass]="
+                      isCollapsed ? 'bi-chevron-down' : 'bi-chevron-up'
+                    " data-testid="icon-expanded"></i>
+                </div>
+              </div>
+              <div class="collapse" id="collapseMobileCare" [ngClass]="{ show: isCollapsed }">
+                <div class="c-header-protection p-2 mt-2" [ngStyle]="{
+                    'background-color':
+                      item.productType === 'AIS Care Plus'
+                        ? '#FCF5E6'
+                        : '#F4E4F0'
+                  }">
+                  <div class="text-header-secondary">{{ item.service }}</div>
+                  <ng-container *ngFor="let proctection of item.protection">
+                    <div *ngIf="proctection.isProtect" class="mt-2">
+                      <img class="icon-protection" [src]="'assets/images/icon-success.png'" />
+                    </div>
+                    <div *ngIf="!proctection.isProtect" class="mt-2">
+                      <img class="icon-protection text-center" [src]="'assets/images/icon-false.png'" />
+                    </div>
+                  </ng-container>
+                </div>
+                <div class="c-header-conditon text-centent p-2 mt-2" [ngStyle]="{
+                    'background-color':
+                      item.productType === 'AIS Care Plus'
+                        ? '#FCF5E6'
+                        : '#F4E4F0'
+                  }">
+                  <div class="row">
+                    <ng-container *ngFor="let condition of item.condition">
+                      <div class="col-6 col-sm-6 col-md-7 col-lg-8 col-xl-8">
+                        &#8226; {{ condition.detail }}
+                      </div>
+                      <div class="col-6 col-sm-6 col-md-5 col-lg-4 col-xl-4">
+                        <div class="float-end">{{ condition.price }} บาท</div>
+                      </div>
+                    </ng-container>
+                    <span class="mt-4 text-center text-condition"
+                      *ngIf="item.productType === 'AIS Care Plus'">*คิดจากราคาเครื่องในวันที่ซื้อ</span>
+                  </div>
+                </div>
+                <div class="c-header-payment p-2 mt-2" [ngStyle]="{
+                    'background-color':
+                      item.productType === 'AIS Care Plus'
+                        ? '#FCF5E6'
+                        : '#F4E4F0'
+                  }">
+                  <div class="text-centent">&#8226; {{ item.serviceFee }}</div>
+                </div>
+                <div class="c-header-heightOfServiceType p-2 mt-2"
+                  [ngStyle]="{ height: heightOfServiceTypeValue + 'px' }" [ngStyle]="{
+                    'background-color': '#FAFAFA'
+                  }">
+                  <div class="col">
+                    <div class="text-header-secondary" *ngIf="item.productType ==='AIS Care Plus'">
+                      <div class="text-center mb-2 ais-color">
+                        {{ item.serviceType.productType }}
+                      </div>
+                      <div class="col mb-1 form-check" *ngFor="
+                          let optionServiceType of item.serviceType.option;
+                          let idxServiceType = index
+                        ">
+                        <div class="row">
+                          <div class="col-1">
+                            <input id="service-care-{{ optionServiceType.name }}" formControlName="serviceType"
+                              type="radio" name="serviceType" [value]="optionServiceType.promotionCode"
+                              [attr.data-testid]="
+                                'radio' + item.productType + idxServiceType
+                              " (change)="
+                                onSelectedService(
+                                  indexService,
+                                  item,
+                                  optionServiceType
+                                )
+                              " />
+                          </div>
+                          <div class="col">
+                            <label for="service-care-{{ optionServiceType.name }}">{{ optionServiceType.name }}
+                              <span class="color-price">{{
+                                optionServiceType.price
+                                }} บาท</span></label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text-header-secondary mb-2" *ngIf="item.productType === 'AppleCare+'">
+                      <ng-container *ngIf="item.serviceType.option.length > 0; else showNoData">
+                        <div class="mb-1 form-check" *ngFor="
+                        let optionServiceType of item.serviceType.option;
+                        let idxServiceType = index
+                      ">
+                          <div class="row">
+                            <div class="col-1">
+                              <input id="service-care-apple-{{
+                              optionServiceType.name
+                            }}" formControlName="serviceType" class="radio" type="radio"
+                                [value]="optionServiceType.promotionCode" name="serviceType" [attr.data-testid]="
+                              'radio' + item.productType + idxServiceType
+                            " (change)="
+                              onSelectedService(
+                                indexService,
+                                item,
+                                optionServiceType,
+                                item.orderFees
+                              )
+                            " />
+                            </div>
+                            <div class="col">
+                              <label for="service-care-apple-{{
+                              optionServiceType.name
+                            }}" class="ais-color text-center ">{{ optionServiceType.name }}</label>
+                            </div>
+                            <span class="price-apple-care color-price text-center apple-price">{{
+                              optionServiceType.price
+                              }} บาท</span>
+                          </div>
+                        </div>
+                      </ng-container>
+                      <ng-template #showNoData>
+                        <div class="text-header-secondary">
+                          ไม่พบข้อมูลราคา AppleCare+ สำหรับรุ่นนี้
+                        </div>
+                      </ng-template>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <ng-container *ngIf="isBuyCare">
+      <div class="row">
+        <div class="col-12">
+          <div class="text-header-secondary mt-3">
+            ระบุเบอร์รับสิทธิโมบายแคร์และอีเมลเพื่อรับข้อมูลเงื่อนไขการประกัน
+            และ ระยะเวลาคุ้มครองของบริการ {{ productType }}
+          </div>
+        </div>
+
+        <ng-container *ngIf="productType == 'AIS Care Plus'">
+          <div class="row mt-3">
+            <div class="col-6">
+              <input [maxlength]="10" formControlName="mobileNo" type="tel" id="mobileNoForOtp" class="form-control"
+                data-testid="inputTextMobileNoForOtp" [attr.disabled]="isSendedOtp" />
+            </div>
+            <div class="col-3">
+              <button [disabled]="isSendedOtp" class="btn button-color-green" type="button" data-testid="buttonSendOtp"
+                [disabled]="formMobileCare.get('mobileNo')?.value?.length < 10" (click)="validateCustomer()">
+                {{ textSendOtp }}
+              </button>
+            </div>
+          </div>
+          <div class="row mt-3" [hidden]="isEnableVerifyOtp">
+            <div class="col-6">
+              <input [maxlength]="4" formControlName="otpCode" type="text" id="otpCode" class="form-control"
+                data-testid="inputTextOtpCode" />
+            </div>
+            <div class="col-3">
+              <button class="btn button-color-green" type="button" data-testid="buttonVerifyOtp"
+                [disabled]="isEnableVerifyOtp" (click)="verifyOtp()">
+                Verify OTP
+              </button>
+            </div>
+          </div>
+        </ng-container>
+
+        <div class="row mt-3">
+          <div class="col-1">
+            <label for="email" class="col-form-label">
+              อีเมล<span style="color: red">*</span></label>
+          </div>
+          <div class="col-md-9 col-lg-8 col-xl-8">
+            <input formControlName="email" type="email" required id="email" class="form-control"
+              (change)="onChangeEmail()" data-testid="inputTextEmail" />
+            <div *ngIf="
+                formMobileCare.controls['email'].invalid &&
+                (formMobileCare.controls['email'].dirty ||
+                  formMobileCare.controls['email'].touched ||
+                  formMobileCare.controls['email'].value === '')
+              ">
+              <span class="error" *ngIf="formMobileCare.controls['email'].errors?.['required']">*กรุณากรอกอีเมล</span>
+              <span class="error"
+                *ngIf="formMobileCare.controls['email'].errors?.['email']">*รูปแบบของอีเมลไม่ถูกต้อง</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </form>
+
+  <div class="row mt-2 mb-3">
+    <form [formGroup]="formIgnoreCase">
+      <div class="row mt-3">
+        <div class="col-1 ms-3">
+          <input id="rdo-none-insterest" formControlName="serviceType" type="radio" name="serviceType"
+            data-testid="radioNotInterest" (change)="onSelectIgnore()" value="ไม่สนใจ" />
+        </div>
+        <div class="col-10 col-md-9 col-lg-8 col-xl-8 m-0 p-0">
+          <label for="rdo-none-insterest" class="text-header">ไม่สนใจความคุ้มครอง</label>
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-11 ms-3">
+          <div *ngIf="!isBuyCare && formIgnoreCase.controls['serviceType'].value"
+            class="col-md-9 col-lg-8 col-xl-8 mt-3">
+            <select formControlName="reason" class="form-select" data-testid="selectReason"
+              (change)="onSelectNotInterest()" required>
+              <option value="ไม่สนใจ" disabled selected>กรุณาระบุเหตุผล</option>
+              <option *ngFor="let option of notInterest" [ngValue]="option">
+                {{ option }}
+              </option>
+            </select>
+            <ng-container *ngIf="
+                (formIgnoreCase.controls['reason'].invalid &&
+                  (formIgnoreCase.controls['reason'].dirty ||
+                    formIgnoreCase.controls['reason'].touched)) ||
+                formIgnoreCase.controls['reason'].value === ''
+              ">
+              <span class="error" *ngIf="
+                  formIgnoreCase.controls['reason'].errors?.['required']
+                ">*กรุณาระบุเหตุผล</span>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-container>
+
+<div #packageIsLimit class="modal fade" id="packageModal" tabindex="-1" aria-labelledby="packageModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="packageModalLabel">แพ็กเกจปัจจุบัน</h5>
+      </div>
+      <div class="modal-body">
+        <div data-testid="packageListDetails">
+          <div *ngFor="let careService of existingMobileCareServices">
+            <div class="row package-list-details">
+              <div class="col-2">
+                <img src="assets/images/mc-package-icon.png" height="50" style="width: 50px !important" />
+              </div>
+              <div class="col-10">
+                <div>{{ careService.model }}</div>
+                <div>{{ careService.promotionName }}</div>
+                <div class="service-care-price">
+                  ฿ {{ careService.priceIncVat | number : "1.2-2" }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-care modal-footer">
+        <div class="col text-center">สิทธิสมัคร AIS CARE PLUS ครบแล้ว</div>
+        <button type="button" class="col-3 btn btn-secondary btn-sm" data-bs-dismiss="modal"
+          (click)="closePackageModal()">
+          ปิด
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

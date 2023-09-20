@@ -1,0 +1,13 @@
+<layout [backUrl]="backPageUrl" titlePageName="ถ่ายรูปบัตรประชาชน" [isShowFooter]="true">
+  <div class="action-container" *ngIf="isLoading">
+    <app-loading></app-loading>
+  </div>
+  <div *ngIf="!isLoading">
+    <app-capture-id-card (imageCapture)="getImageCapture($event)"></app-capture-id-card>
+    <div footer-layout class="d-flex justify-content-evenly w-100">
+      <app-button-next type="button" [textButton]="textBackButton" [isPrimary]="false" (click)="onBack()"></app-button-next>
+      <app-button-next type="button" [textButton]="textNextButton" (click)="onNext()"
+        [ngClass]="{ disabled: !image }"></app-button-next>
+    </div>
+  </div>
+</layout>

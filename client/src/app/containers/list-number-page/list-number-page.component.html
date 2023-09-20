@@ -1,0 +1,82 @@
+  <layout [backUrl]="backUrl" [isShowFooter]="true" titlePageName="เช็คสิทธิ">
+  <menu-bar
+    [isShowCategory]="false"
+    [isShowFilter]="false"
+    typeInputSearch="number"
+  ></menu-bar>
+  <div class="container-md custom-container">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div
+          class="text-justify font-number-title col-8"
+          data-testid="textPleaseSelectNumber"
+        >
+          กรุณาเลือกเบอร์ที่ต้องการทำรายการ
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <ul class="nav nav-pills mt-2">
+          <li
+            data-testid="post-paid-button"
+            class="nav-item"
+            *ngIf="allNumber.postpaidMobileList.length > 0"
+          >
+            <a
+              class="nav-link custom-pill"
+              [class.active]="activePill === 1"
+              (click)="setActivePill(1)"
+            >
+              <img class="pill-img" src="assets/ais-icon-2.png" />Postpaid
+            </a>
+          </li>
+          <li
+            data-testid="pre-paid-button"
+            class="nav-item"
+            *ngIf="allNumber.prepaidMobileList.length > 0"
+          >
+            <a
+              class="nav-link custom-pill"
+              [class.active]="activePill === 2"
+              (click)="setActivePill(2)"
+            >
+              <img class="pill-img" src="assets/AIS 1 2 Call.png" />Prepaid
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="tab-content">
+        <div
+          id="postpaid"
+          class="tab-pane fade"
+          [class.show]="activePill === 1"
+          [class.active]="activePill === 1"
+        >
+          <app-list-number
+            [allNumber]="allNumber.postpaidMobileList"
+            (onEmitMoblieNo)="onEmitMoblieNo($event)"
+          ></app-list-number>
+        </div>
+        <div
+          id="prepaid"
+          class="tab-pane fade"
+          [class.show]="activePill === 2"
+          [class.active]="activePill === 2"
+        >
+          <app-list-number
+            [allNumber]="allNumber.prepaidMobileList"
+            (onEmitMoblieNo)="onEmitMoblieNo($event)"
+          ></app-list-number>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div footer-layout>
+    <app-button-next
+      type="button"
+      textButton="NEXT"
+      (click)="onNext()"
+      [ngClass]="{ disabled: disabledButtonNext }"
+    ></app-button-next>
+  </div>
+</layout>

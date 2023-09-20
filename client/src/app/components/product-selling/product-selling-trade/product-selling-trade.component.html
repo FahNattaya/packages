@@ -1,0 +1,128 @@
+<div class="my-3" data-testid="trade-detail" *ngIf="campaignDataSelected">
+  <ng-container *ngIf="trades.length > 0">
+    <div
+      class="campaign-name"
+      [ngClass]="{ default: !campaignDataSelected.icon }"
+    >
+      <img
+        src="{{ campaignDataSelected.icon || 'assets/images/logo-ais.png' }}"
+        width="50"
+        height="50"
+      />
+      <p data-testid="tradeTitle" *ngIf="trades.length > 0 || isTradesEmpty">
+        {{ campaignDataSelected.name }} : สำหรับ{{
+          campaignDataSelected.customerCriteria
+        }}
+      </p>
+    </div>
+    <app-continuous-scrolling>
+      <div
+        class="card scroll-item"
+        *ngFor="let trade of trades; let indexTrade = index"
+        [attr.data-testid]="dataTestID(trade.tradeNo)"
+        [attr.active]="indexTrade == tradeNumber"
+        (click)="selectTrade(indexTrade)"
+      >
+        <div class="card-body pb-0">
+          <div class="row text-center">
+            <div
+              class="col-12 mt-2 trade-number"
+              [attr.data-testid]="'tradeNumber-' + trade.tradeNo"
+            >
+              {{ trade.tradeNo }}
+            </div>
+            <div
+              class="col-12 mt-2"
+              [attr.data-testid]="'priceIncludeVat-' + trade.tradeNo"
+            >
+              ราคา {{ price.includeVat | number }} บาท
+            </div>
+            <div
+              class="col-12 mt-2 special-discount"
+              [attr.data-testid]="'specialDiscount-' + trade.tradeNo"
+              *ngIf="trade.discountPrice > 0"
+            >
+              (ส่วนลดพิเศษ {{ trade.discountPrice | number }} บาท)
+            </div>
+          </div>
+          <hr />
+        </div>
+        <div class="card-body col-xs-6 trade-detail-list">
+          <div class="row" *ngIf="trade.payAdvance.priceIncludeVat > 0">
+            <div class="col-auto">
+              <i class="bi bi-credit-card"></i>
+            </div>
+            <div class="col" data-testid="payAdvance">
+              ชำระล่วงหน้า
+              <span
+                class="pay-advance"
+                [attr.data-testid]="'priceIncludeVat-' + trade.tradeNo"
+                >{{ trade.payAdvance.priceIncludeVat | number }} บาท
+              </span>
+            </div>
+          </div>
+          <div class="row" *ngIf="trade.minnimumPackagePrice">
+            <div class="col-auto">
+              <i class="bi bi-balloon-heart"></i>
+            </div>
+            <div class="col" [attr.data-testid]="'package-' + trade.tradeNo">
+              แพ็กเกจ
+              {{
+                showPackage(
+                  trade.minnimumPackagePrice,
+                  trade.maximumPackagePrice
+                )
+              }}
+            </div>
+          </div>
+          <ng-container *ngIf="flow === 'AIS'">
+            <div
+              class="row"
+              *ngFor="
+                let freegood of trade.freegoods;
+                let indexFreeGoods = index
+              "
+            >
+              <div class="col-auto">
+                <i class="bi bi-gift"></i>
+              </div>
+              <div
+                class="col"
+                [attr.data-testid]="
+                  'freeGoods-' + trade.tradeNo + '-' + indexFreeGoods
+                "
+              >
+                {{ freegood.name }}
+              </div>
+            </div>
+          </ng-container>
+        </div>
+        <div
+          class="card-body text-center p-3 price-discount"
+          [attr.active]="indexTrade == tradeNumber"
+        >
+          <div
+            id="netPrice"
+            class="col"
+            [attr.data-testid]="'netPrice-' + trade.tradeNo"
+          >
+            {{ netPrice(price.includeVat, trade.discountPrice!) | number }}
+            บาท
+          </div>
+        </div>
+      </div>
+    </app-continuous-scrolling>
+  </ng-container>
+  <div
+    class="my-3 row text-center"
+    *ngIf="isTradesEmpty"
+    data-testid="showErrorTrade"
+  >
+    <h5>ไม่พบข้อมูลเทรด</h5>
+  </div>
+  <app-skeleton-loading
+    *ngIf="trades.length === 0"
+    type="trade"
+    [count]="4"
+  ></app-skeleton-loading>
+</div>

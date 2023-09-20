@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://dev-mychannel.cdc.ais.th/",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

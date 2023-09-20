@@ -1,0 +1,543 @@
+<div #canvas class="offcanvas offcanvas-bottom" tabindex="-1" id="receiptForm">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasReceipt">
+      <i class="bi bi-pencil-square icon-edit"></i>
+      ข้อมูลใบเสร็จรับเงิน
+    </h5>
+    <button
+      id="closeButton"
+      type="button"
+      class="btn-close text-reset"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+      (click)="closeForm()"
+    ></button>
+  </div>
+  <div class="offcanvas-body col-md-12 col-12 mx-auto mt-4 mb-4">
+    <form
+      *ngIf="shopType == 'AIS'"
+      id="ais-address-form"
+      data-testid="ais-address-form"
+      [formGroup]="aisShopForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="form-group row">
+        <label
+          for="id-card"
+          data-testid="label-id-card"
+          class="col-sm-2 col-form-label"
+          >เลขบัตรปชช. <span class="red-flag">*</span></label
+        >
+        <div class="col-sm-10">
+          <input
+            type="text"
+            formControlName="idCard"
+            id="id-card"
+            maxlength="13"
+            data-testid="id-card"
+            onlyNumber
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': submitted && formControl['idCard'].errors
+            }"
+          />
+          <div
+            *ngIf="submitted && formControl['idCard'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="formControl['idCard']['errors']['required']">
+              กรุณาระบุเลขบัตรปชช.
+            </div>
+            <div *ngIf="formControl['idCard']['errors']['minlength']">
+              ระบุเลขบัตรปชช. ไม่ครบ 13 หลัก
+            </div>
+            <div *ngIf="formControl['idCard']['errors']['maxlength']">
+              ระบุเลขบัตรปชช. เกิน 13 หลัก
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row mt-3">
+        <label
+          for="customerName"
+          data-testid="label-customer-name"
+          class="col-sm-2 col-form-label"
+          >ผู้ซื้อ <span class="red-flag">*</span></label
+        >
+        <div class="col-sm-10">
+          <input
+            type="text"
+            formControlName="customerName"
+            id="customerName"
+            data-testid="customer-name"
+            maxlength="50"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': submitted && formControl['customerName'].errors
+            }"
+          />
+          <div
+            *ngIf="submitted && formControl['customerName'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="formControl['customerName']['errors']['required']">
+              กรุณาระบุชื่อ
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row mt-3">
+        <label
+          for="homeNo"
+          data-testid="label-home-no"
+          class="col-sm-2 col-form-label"
+          >บ้านเลขที่ <span class="red-flag">*</span></label
+        >
+        <div class="col-sm-2">
+          <input
+            type="text"
+            formControlName="homeNo"
+            id="homeNo"
+            data-testid="home-no"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                submitted && formControl['homeNo'].status === 'INVALID'
+            }"
+          />
+          <div
+            *ngIf="submitted && formControl['homeNo'].status === 'INVALID'"
+            class="error-text"
+          >
+            กรุณาระบุบ้านเลขที่
+          </div>
+        </div>
+        <label for="moo" data-testid="label-moo" class="col-sm-1 col-form-label"
+          >หมู่ที่
+        </label>
+        <div class="col-sm-2">
+          <input
+            type="text"
+            formControlName="moo"
+            id="moo"
+            data-testid="moo"
+            class="form-control"
+          />
+        </div>
+        <label
+          for="mooBan"
+          data-testid="label-moo-ban"
+          class="col-sm-1 col-form-label"
+          >หมู่บ้าน
+        </label>
+        <div class="col-sm-2">
+          <input
+            type="text"
+            formControlName="mooBan"
+            id="mooBan"
+            data-testid="mooBan"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="form-group row mt-3">
+        <label
+          for="building-name"
+          data-testid="label-building-name"
+          class="col-sm-2 col-form-label"
+          >ชื่ออาคาร
+        </label>
+        <div class="col-sm-4">
+          <input
+            type="text"
+            formControlName="buildingName"
+            id="building-name"
+            data-testid="building-name"
+            class="form-control"
+          />
+        </div>
+        <label
+          for="floor"
+          data-testid="label-floor"
+          class="col-sm-1 col-form-label"
+          >ชั้นที่
+        </label>
+        <div class="col-sm-2">
+          <input
+            type="text"
+            formControlName="floor"
+            id="floor"
+            data-testid="floor"
+            class="form-control"
+          />
+        </div>
+        <label
+          for="room"
+          data-testid="label-room"
+          class="col-sm-1 col-form-label"
+          >ห้อง
+        </label>
+        <div class="col-sm-2">
+          <input
+            type="text"
+            formControlName="room"
+            id="room"
+            data-testid="room"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="form-group row mt-3">
+        <label
+          for="province"
+          data-testid="label-province"
+          class="col-sm-2 col-form-label"
+          >จังหวัด <span class="red-flag">*</span></label
+        >
+        <div
+          class="col-sm-10"
+          [ngClass]="{
+            'border-error':
+              submitted && formControl['province'].status === 'INVALID'
+          }"
+        >
+          <ng-autocomplete
+            [data]="province"
+            [searchKeyword]="'PROVINCE_NAME'"
+            placeholder="จังหวัด"
+            [initialValue]="province"
+            [itemTemplate]="provinceTemplate"
+            [notFoundTemplate]="notFoundTemplate"
+            data-testid="province"
+            formControlName="province"
+            (selected)="onSelectProvice($event)"
+            (inputChanged)="$event"
+          >
+          </ng-autocomplete>
+        </div>
+        <div class="col-sm-2"></div>
+        <div
+          *ngIf="submitted && formControl['province'].status === 'INVALID'"
+          class="col-sm-10 error-text"
+        >
+          กรุณาระบุจังหวัด
+        </div>
+      </div>
+      <div class="form-group row mt-3">
+        <label
+          for="amphur"
+          data-testid="label-amphur"
+          class="col-sm-2 col-form-label"
+          >เขต / อำเภอ <span class="red-flag">*</span></label
+        >
+        <div
+          class="col-sm-10"
+          [ngClass]="{
+            'border-error':
+              submitted && formControl['amphur'].status === 'INVALID'
+          }"
+        >
+          <ng-autocomplete
+            [data]="amphur"
+            data-testid="amphur"
+            formControlName="amphur"
+            searchKeyword="CITY"
+            placeholder="อำเภอ"
+            [itemTemplate]="amphurTemplate"
+            [notFoundTemplate]="notFoundTemplate"
+            (selected)="onSelectedAmphur($event)"
+            (inputChanged)="$event"
+          >
+          </ng-autocomplete>
+        </div>
+        <div class="col-sm-2"></div>
+        <div
+          *ngIf="submitted && formControl['amphur'].status === 'INVALID'"
+          class="col-sm-10 error-text"
+        >
+          กรุณาระบุอำเภอ
+        </div>
+      </div>
+      <div class="form-group row mt-3">
+        <label
+          for="tumbol"
+          data-testid="label-tumbol"
+          class="col-sm-2 col-form-label"
+          >แขวง / ตำบล <span class="red-flag">*</span></label
+        >
+        <div
+          class="col-sm-10"
+          [ngClass]="{
+            'border-error':
+              submitted && formControl['tumbol'].status === 'INVALID'
+          }"
+        >
+          <ng-autocomplete
+            [data]="tumbol"
+            searchKeyword="TUMBOL"
+            placeholder="ตำบล"
+            formControlName="tumbol"
+            [itemTemplate]="tumbolTemplate"
+            [notFoundTemplate]="notFoundTemplate"
+            [minQueryLength]="2"
+            data-testid="tumbol"
+            (selected)="onSelectedTumbol($event)"
+            (inputChanged)="$event"
+          >
+          </ng-autocomplete>
+        </div>
+        <div class="col-sm-2"></div>
+        <div
+          *ngIf="submitted && formControl['tumbol'].status === 'INVALID'"
+          class="col-sm-10 error-text"
+        >
+          กรุณาระบุตำบล
+        </div>
+      </div>
+      <div class="form-group row mt-3">
+        <label
+          for="zipCode"
+          data-testid="label-zipCode"
+          class="col-sm-2 col-form-label"
+          >รหัสไปรษณีย์ <span class="red-flag">*</span></label
+        >
+        <div
+          class="col-sm-10"
+          [ngClass]="{
+            'border-error':
+              submitted && formControl['zipCode'].status === 'INVALID'
+          }"
+        >
+          <ng-autocomplete
+            [data]="address"
+            type="text"
+            searchKeyword="ZIPCODE"
+            placeholder="กรุณาระบุรหัสไปรษณีย์"
+            formControlName="zipCode"
+            [itemTemplate]="zipcodeTemplate"
+            [notFoundTemplate]="notFoundTemplate"
+            [minQueryLength]="2"
+            [initialValue]="zipCodeByTumbol"
+            (inputChanged)="$event"
+          >
+          </ng-autocomplete>
+        </div>
+        <div class="col-sm-2"></div>
+        <div
+          *ngIf="submitted && formControl['zipCode'].status === 'INVALID'"
+          class="col-sm-10 error-text"
+        >
+          กรุณาระบุรหัสไปรษณีย์
+        </div>
+      </div>
+      <div class="form-group row mt-3">
+        <label
+          for="email"
+          data-testid="label-email"
+          class="col-sm-2 col-form-label"
+          >อีเมล <span class="red-flag">*</span></label
+        >
+        <div class="col-sm-10">
+          <input
+            type="text"
+            formControlName="email"
+            id="email"
+            data-testid="email"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': submitted && formControl['email'].errors
+            }"
+          />
+          <div
+            *ngIf="submitted && formControl['email'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="formControl['email']['errors']['required']">
+              กรุณาระบุ E-mail
+            </div>
+            <div *ngIf="formControl['email']['errors']['minlength']">
+              กรุณาระบุ E-mail มากกว่า 1 ตัวอักษร
+            </div>
+            <div *ngIf="formControl['email']['errors']['maxlength']">
+              กรุณาระบุ E-mail ไม่เกิน 250 ตัวอักษร
+            </div>
+            <div
+              *ngIf="
+                !formControl['email']['errors']['required'] &&
+                !formControl['email']['errors']['minlength'] &&
+                !formControl['email']['errors']['maxlength'] &&
+                formControl['email']['errors']['email']
+              "
+            >
+              กรุณาระบุ E-mail ให้ถูกต้อง
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row mt-3">
+        <label
+          for="otherMobileNo"
+          data-testid="label-otherMobileNo"
+          class="col-sm-2 col-form-label"
+          >เบอร์ติดต่ออื่น</label
+        >
+        <div class="col-sm-10">
+          <input
+            type="text"
+            formControlName="otherMobileNo"
+            id="otherMobileNo"
+            data-testid="otherMobileNo"
+            maxlength="10"
+            class="form-control"
+          />
+        </div>
+      </div>
+
+      <ng-template #zipcodeTemplate let-zipcode>
+        <a [innerHTML]="zipcode.CITY + ' ' + zipcode.TUMBOL"></a>
+      </ng-template>
+
+      <ng-template #provinceTemplate let-province>
+        <a [innerHTML]="province.PROVINCE_NAME"></a>
+      </ng-template>
+
+      <ng-template #amphurTemplate let-city>
+        <a [innerHTML]="city.CITY"></a>
+      </ng-template>
+
+      <ng-template #tumbolTemplate let-item>
+        <a [innerHTML]="item.TUMBOL + ' (' + item.ZIPCODE + ')'"> </a>
+      </ng-template>
+
+      <ng-template #notFoundTemplate let-notFound>
+        <div [innerHTML]="notFound"></div>
+      </ng-template>
+
+      <div class="button-form">
+        <app-button-next
+          type="submit"
+          [textButton]="confirmButtonText"
+        ></app-button-next>
+      </div>
+    </form>
+    <form
+      *ngIf="shopType == 'PARTNER'"
+      [formGroup]="partnerForm"
+      id="partner-address-form"
+      data-testid="partner-address-form"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="form-group row">
+        <label
+          for="customer-name-partner"
+          data-testid="label-customer-name-partner"
+          class="col-sm-2 col-form-label"
+          >ชื่อ <span class="red-flag">*</span></label
+        >
+        <div class="col-sm-10">
+          <input
+            type="text"
+            formControlName="partnerCustomerName"
+            id="customer-name-partner-form"
+            data-testid="customer-name-partner"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                submitted && formControl['partnerCustomerName'].errors
+            }"
+          />
+          <div
+            *ngIf="submitted && formControl['partnerCustomerName'].errors"
+            class="invalid-feedback"
+          >
+            <div
+              *ngIf="formControl['partnerCustomerName']['errors']['required']"
+            >
+              กรุณาระบุชื่อ
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row mt-3">
+        <label
+          for="email-partner"
+          data-testid="label-email-partner"
+          class="col-sm-2 col-form-label"
+          >อีเมล <span class="red-flag">*</span></label
+        >
+        <div class="col-sm-10">
+          <input
+            type="email"
+            formControlName="partnerEmail"
+            id="email-partner-form"
+            data-testid="email-partner-form"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': submitted && formControl['partnerEmail'].errors
+            }"
+          />
+          <div
+            *ngIf="submitted && formControl['partnerEmail'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="formControl['partnerEmail']['errors']['required']">
+              กรุณาระบุ E-mail
+            </div>
+            <div *ngIf="formControl['partnerEmail']['errors']['minlength']">
+              กรุณาระบุ E-mail มากกว่า 1 ตัวอักษร
+            </div>
+            <div *ngIf="formControl['partnerEmail']['errors']['maxlength']">
+              กรุณาระบุ E-mail ไม่เกิน 250 ตัวอักษร
+            </div>
+            <div
+              *ngIf="
+                !formControl['partnerEmail']['errors']['required'] &&
+                !formControl['partnerEmail']['errors']['minlength'] &&
+                !formControl['partnerEmail']['errors']['maxlength'] &&
+                formControl['partnerEmail']['errors']['invalidEmailOrHyphen']
+              "
+            >
+              กรุณาระบุ E-mail ให้ถูกต้อง
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row mt-3">
+        <label
+          for="mobile-no-partner-form"
+          data-testid="label-mobile-no-partner"
+          class="col-sm-2 col-form-label"
+          >หมายเลขโทรศัพท์ <span class="red-flag">*</span></label
+        >
+        <div class="col-sm-10">
+          <input
+            type="text"
+            formControlName="partnerMobileNo"
+            id="mobile-no-partner-form"
+            data-testid="mobile-no-partner-form"
+            maxlength="10"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': submitted && formControl['partnerMobileNo'].errors
+            }"
+            onlyNumber
+          />
+          <div
+            *ngIf="submitted && formControl['partnerMobileNo'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="formControl['partnerMobileNo']['errors']['required']">
+              กรุณาระบุหมายเลขโทรศัพท์
+            </div>
+            <div *ngIf="formControl['partnerMobileNo']['errors']['minlength']">
+              กรุณาระบุหมายเลขโทรศัพท์ให้ครบ10หลัก
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="button-form">
+        <app-button-next [textButton]="confirmButtonText"></app-button-next>
+      </div>
+    </form>
+  </div>
+</div>

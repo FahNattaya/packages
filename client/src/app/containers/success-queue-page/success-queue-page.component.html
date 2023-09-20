@@ -1,0 +1,67 @@
+<layout
+  [backUrl]="backPageUrl"
+  titlePageName="กำหนดคิวสำเร็จ"
+  [isShowFooter]="true"
+>
+  <div class="container-md">
+    <app-step-bar stepWaiting="allComplete"></app-step-bar>
+    <app-success-card></app-success-card>
+    <div
+      class="container-fluid"
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      "
+    >
+      <div class="row">
+        <div class="row mt-5">
+          <div
+            data-testid="text-queue"
+            class="text-justify"
+            style="color: #657884"
+          >
+            หมายเลขคิวในการชำระสินค้าของท่านคือ
+          </div>
+          <div
+            style="display: flex; align-items: center; justify-content: center"
+          >
+            <div class="queue-box mt-2">
+              <div
+                data-testid="queue-number"
+                class="text-justify"
+                style="color: #8cc540"
+              >
+                <b>{{ queueNo }}</b>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div
+            data-testid="text-thank-you"
+            class="text-justify"
+            style="color: #8cc540"
+          >
+            ขอบคุณที่เลือกใช้บริการ
+          </div>
+          <div>
+            <img
+              data-testid="ais-logo"
+              class="ais-logo"
+              src="assets/ais-logo.png"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div footer-layout class="d-flex justify-content-evenly w-100">
+    <app-button-next
+      type="button"
+      [textButton]="textMainMenuButton"
+      (click)="onNext()"
+    ></app-button-next>
+  </div>
+</layout>

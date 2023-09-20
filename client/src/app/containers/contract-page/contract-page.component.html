@@ -1,0 +1,31 @@
+<layout [backUrl]="backPageUrl" titlePageName="สัญญา" [isShowFooter]="true">
+  <div class="action-container" *ngIf="isLoading">
+    <app-loading></app-loading>
+  </div>
+
+  <div class="action-container" *ngIf="contractError">
+    <h1>{{contractError.message}}</h1>
+  </div>
+
+  <div class="container-md" *ngIf="!isLoading && !contractError">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+        <img [src]="contractImage" class="img-fluid" alt="contractImage" data-testid="contractImage" />
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-auto text-center">
+        <input id="checkboxContract" data-testid="confirmCheck" type="checkbox" id="isConfirm" name="isConfirm"
+          (click)="confirmContract()" />
+        ข้าพเจ้าตกลงผูกพันและจะปฏิบัติตามข้อตกลงข้างต้น
+        ด้วยความสมัครใจจึงลงลายมือชื่อไว้เป็นหลักฐาน
+      </div>
+    </div>
+  </div>
+
+  <div footer-layout class="d-flex justify-content-evenly w-100">
+    <app-button-next  type="button" [textButton]="textCancelButton" [isPrimary]="false" (click)="onBack()"></app-button-next>
+
+    <app-button-next  type="button" [isPrimary]="true" (click)="onNext()" [ngClass]="{ disabled: disabled }"></app-button-next>
+  </div>
+</layout>

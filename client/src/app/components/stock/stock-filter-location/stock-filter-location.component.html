@@ -1,0 +1,74 @@
+<div class="container-md">
+  <div class="header">สาขาที่มีของ</div>
+  <div class="nav nav-tabs nav-fill mt-2 mb-3" role="tablist">
+    <button
+      class="nav-link active button btn-location"
+      (click)="onSameSubDistrict()"
+      data-bs-toggle="tab"
+      role="tab"
+      data-testid="filterTanbolButton"
+    >
+      แขวง / ตำบลเดียวกัน
+    </button>
+    <button
+      class="nav-link button btn-location"
+      (click)="onSameDistrict()"
+      data-bs-toggle="tab"
+      role="tab"
+      data-testid="filterDistrictButton"
+    >
+      เขต / อำเภอเดียวกัน
+    </button>
+    <button
+      class="nav-link button btn-location"
+      (click)="onSameProvince()"
+      data-bs-toggle="tab"
+      role="tab"
+      data-testid="filterProvinceButton"
+    >
+      จังหวัดเดียวกัน
+    </button>
+  </div>
+  <ng-container *ngIf="!(loading$ | async)">
+    <div
+      class="header"
+      *ngIf="
+        (dataLocation$ | async) === null ||
+        (dataLocation$ | async)?.length === 0
+      "
+    >
+      ไม่พบสาขาที่มีของ
+    </div>
+    <div
+      class="checkbox checkbox-location mt-3"
+      *ngFor="let shopInfo of dataLocation$ | async; let i = index"
+    >
+      <label class="checkbox" data-testid="cartCheckbox">
+        {{ shopInfo.locationName }}
+        <input
+          type="checkbox"
+          [(ngModel)]="selectedCheckboxes[i]"
+          (ngModelChange)="saveData($event, shopInfo.locationCode)"
+        />
+        <i class="bi bi-check2 checkmark"></i>
+      </label>
+    </div>
+    <div class="justify-content-end d-flex">
+      <button
+        class="button btn-search"
+        (click)="onSearch()"
+        [ngClass]="{
+          'btn-search-enable': !isDisabled,
+          'btn-search-disable': isDisabled
+        }"
+        [disabled]="isDisabled"
+        data-testid="searchLocationButton"
+      >
+        ค้นหา
+      </button>
+    </div>
+  </ng-container>
+  <div class="action-container" *ngIf="loading$ | async">
+    <app-loading></app-loading>
+  </div>
+</div>

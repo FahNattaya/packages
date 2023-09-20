@@ -1,0 +1,112 @@
+<layout [backUrl]="backPageUrl" titlePageName="รายละเอียดสินค้า">
+  <menu-bar (imei)="onScanImei($event)" [imeiCode]="imeiCode"></menu-bar>
+  <div class="loading-container" *ngIf="loading">
+    <app-loading></app-loading>
+  </div>
+  <div class="container-md">
+    <ng-container *ngIf="dataDetailPage">
+      <app-product-selling-detail
+        (selectedDetail)="onSelectDetail($event)"
+        (onOutOfStockOnHand)="onOutOfStockOnHand($event)"
+        [dataFromStore]="dataDetailPage"
+      ></app-product-selling-detail>
+    </ng-container>
+    <div class="d-flex flex-column gap-3">
+      <div class="cus-criteria-header"><span>เลือกโครงการ</span></div>
+      <div class="cus-criteria-container">
+        <div
+          *ngFor="let customerConfig of customerConfigFlow"
+          class="cus-criteria border"
+          [ngClass]="{ disabled: customerConfig.statusEnable === 'N' }"
+          [attr.active]="selectedCriteria == customerConfig.codeID"
+          [attr.data-testid]="getDataTestID(customerConfig.menuCode)"
+          (click)="onSelectCriteria(customerConfig)"
+        >
+          <span>{{ customerConfig.flowNameTh }}</span>
+        </div>
+      </div>
+      <app-product-selling-campaign
+        (isSelectedCampaign)="onSelectCampaign($event)"
+        [campaignData]="campaignData"
+        [customerCriteria]="customerCriteria?.flowNameTh"
+      ></app-product-selling-campaign>
+      <app-product-selling-trade
+        (selectedTrade)="onSelectTrade($event)"
+        [campaignDataSelected]="campaignDataSelected"
+        [trades]="trades"
+        [price]="price"
+      ></app-product-selling-trade>
+      <ng-container *ngIf="customerCriteria?.isShowCurrentPack">
+        <app-product-selling-package
+          [isSelectedTrade]="tradeIsSelected"
+          [selectedTrade]="tradeForPackage"
+        >
+        </app-product-selling-package>
+      </ng-container>
+    </div>
+    <div class="button">
+      <app-button-next
+        type="button"
+        [textButton]="textAddCartButton"
+        [isPrimary]="false"
+        (click)="saveProductSelected()"
+        [ngClass]="{
+          disabled:
+            isDisabledButton ||
+            isOutOfStockOnHand ||
+            cartService.cartCount >= 1 ||
+            isCheckSelectedCampaign ||
+            isDisabledCheckSelectPackage ||
+            customerCriteria?.isShowCurrentPack
+        }"
+      ></app-button-next>
+      <app-button-next
+        type="button"
+        [textButton]="textBuyNowButton"
+        [isPrimary]="true"
+        (click)="saveProductSelected()"
+        class="disabled"
+      ></app-button-next>
+    </div>
+  </div>
+</layout>
+
+<div
+  #imeiModal
+  class="modal fade modal-fade"
+  id="imeiModal"
+  tabindex="-1"
+  aria-labelledby="imeiModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header header-imei-model">
+        <div class="col-2"></div>
+        <div class="col-8">
+          <h5 class="modal-title text-center" data-testid="textImeiTitle">
+            หน้า Scan IMEI
+          </h5>
+        </div>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          data-testid="closeModelImei"
+          (click)="closeImeiModal()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div data-testid="formImei">
+          <app-form-imei
+            (onConfirmImei)="onConfirmImei($event)"
+            (goNextPage)="scanImeiSuccess($event)"
+            (imeiSubscription)="onSetImeiSubscription($event)"
+            [resetForm]="resetImeiForm"
+          ></app-form-imei>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

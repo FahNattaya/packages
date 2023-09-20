@@ -1,0 +1,94 @@
+<div class="mt-2">
+  <div class="row text-center" *ngIf="isLoading">
+    <app-loading></app-loading>
+  </div>
+  <div class="row" *ngIf="!isLoading">
+    <form [formGroup]="imeiForm">
+      <div class="form-group row mb-2">
+        <label class="col-3 text-end" data-testid="textImei">IMEI</label>
+        <div class="col-6 col-lg-7">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              style="font-size: 14px"
+              data-testid="inputImei"
+              formControlName="imeiNo"
+              #imeiNo
+              (input)="onChangeImei(imeiNo)"
+              [attr.data-in]="imeiForm.get('imeiNo')?.value || ''"
+            />
+            <span class="input-group-text">
+              <i
+                class="bi-upc-scan"
+                data-testid="iconScanImei"
+                (click)="onScanImei()"
+              ></i>
+            </span>
+            <app-scanner-imei
+              [isStartScan]="isScanImei"
+              (setImeiCode)="onScanSuccess($event)"
+            ></app-scanner-imei>
+          </div>
+        </div>
+        <div class="col-2 col-lg-2">
+          <button
+            type="button"
+            class="btn custom-button-confirm"
+            data-testid="buttonConfirm"
+            (click)="checkImei()"
+            [disabled]="imeiForm.controls['imeiNo'].invalid"
+          >
+            ยืนยัน
+          </button>
+        </div>
+      </div>
+      <div class="form-group row mb-2">
+        <label class="col-3 text-end" data-testid="textProduct">สินค้า</label>
+        <div class="col-6 col-lg-7">
+          <input
+            type="text"
+            class="form-control form-control-lg custom-background"
+            data-testid="inputProduct"
+            formControlName="modelName"
+            [attr.data-in]="imeiForm.get('modelName')?.value || ''"
+            readonly
+            onfocus="this.blur()"
+          />
+        </div>
+      </div>
+      <ng-container *ngIf="!isCartPage">
+        <div class="form-group row mb-4">
+          <label class="col-3 text-end" data-testid="textPrice"
+            >ราคาเครื่องที่ขาย</label
+          >
+          <div class="col-6 col-md- col-lg-7">
+            <input
+              type="text"
+              class="form-control form-control-lg custom-background"
+              data-testid="inputPrice"
+              formControlName="price"
+              [attr.data-in]="imeiForm.get('price')?.value || ''"
+              [appPriceDecimalFormat]="imeiForm.get('price')?.value"
+              readonly
+              onfocus="this.blur()"
+            />
+          </div>
+        </div>
+      </ng-container>
+      <div class="form-group row mt-4" *ngIf="!isCartPage">
+        <div class="col-12 text-center">
+          <button
+            type="submit"
+            class="btn custom-button-next-imei"
+            data-testid="buttonNextImei"
+            [disabled]="imeiForm.invalid"
+            (click)="onNext()"
+          >
+            NEXT
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="popup" *ngIf="isShow">
+  <div class="popup-content">
+    <div class="row justify-content-center">
+      <img [src]="isSuccessAlert ? succcessImagePath : warningImagePath" class="img-fluid" />
+
+      <div class="modal-body content">
+        <p class="modal-title mb-3">{{ message }}</p>
+        <ng-container *ngIf="errorDetail">
+          <button type="button" class="btn btn-outline-secondary" (click)="toggleDetails()">Show/Hide Details</button>
+          <div class="collapse mt-2" [ngClass]="{ show: showDetails }">
+            <div class="card card-body">
+              <p>{{resultCode}}</p>
+              <p>{{ errorDetail }}</p>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="d-flex justify-content-center align-items-center mt-3">
+        <button type="button" class="btn btn-secondary button" data-testid="buttonCancel" *ngIf="cancelButtonLabel"
+          (click)="onCancel()">
+          {{ cancelButtonLabel }}
+        </button>
+        <button type="button" class="btn btn-success button" (click)="onConfirm()" data-testid="buttonOk">
+          {{ confirmButtonLabel }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

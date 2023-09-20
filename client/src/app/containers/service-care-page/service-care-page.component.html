@@ -1,0 +1,22 @@
+<layout [backUrl]="backPageUrl" titlePageName="service care" [isShowFooter]="true">
+    <div class="action-container" *ngIf="isLoading">
+        <app-loading></app-loading>
+    </div>
+    <div class="container" *ngIf="!isLoading">
+        <div class="row">
+            <span class="fs-4 p-3 mx-2">เลือกบริการความคุ้มครอง<br /></span>
+        </div>
+        <div class="row">
+            <app-mobile-care 
+                (mobileCareForm)="getMobileCareFormValid($event)"
+                (limitCareService)="getLimitMoblieCare($event)" 
+                (selectedChange)="getDataMobileCareSelected($event)">
+            </app-mobile-care>
+        </div>
+    </div>
+    <div class="row text-center">
+        <app-button-next type="button" [textButton]="textNextButton" (click)="updateMobileCare() "
+            [ngClass]="{disabled: !buttonNextEnableStatus}">
+        </app-button-next>
+    </div>
+</layout>

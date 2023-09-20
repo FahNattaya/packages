@@ -1,0 +1,77 @@
+.number-list-container {
+  padding: 0;
+}
+
+.custom-hr-green {
+  border: solid 1px #8bc540;
+}
+
+.txt-status li {
+  font-size: 20px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  user-select: none;
+}
+
+.custom-hr {
+  border-top: 1px dashed #989ea2;
+}
+
+.txt-status-active {
+  margin-left: 30px;
+  color: #8bc540;
+  margin-top: 15px;
+}
+
+.txt-status-suspend {
+  margin-left: 30px;
+  color: #989ea2;
+  margin-top: 15px;
+}
+
+.custom-radio {
+  display: none;
+}
+
+.custom-radio+label {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: var(--mc-gray-color);
+  cursor: pointer;
+  position: relative;
+}
+
+.custom-radio:checked+label:after {
+  content: "\2713";
+  font-size: 14px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.custom-radio:checked+label {
+  background-color: var(--mc-primary-color);
+}
+
+.custom-radio-label input[type="radio"] {
+  position: absolute;
+  top: 0;
+  left: 1;
+  opacity: 0;
+}
+
+.border-page {
+  border: 3px solid rgb(220, 220, 220);
+  padding: 20px;
+  border-radius: 1rem;
+}

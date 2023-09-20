@@ -1,0 +1,11 @@
+<div class="step-bar-container">
+  <ul class="step-bar">
+    <li
+      *ngFor="let step of steps"
+      [ngClass]="step.status"
+      [attr.data-testid]="'step' + (step.step | titlecase)"
+    >
+      {{ step.label }}
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,103 @@
+<div
+  class="mt-4"
+  data-testid="campaign-detail"
+  *ngIf="campaignData && campaignData.length > 0"
+>
+  <p data-testid="lableHeaderCampaign">รับสิทธิได้</p>
+  <div class="overflow-auto d-flex">
+    <div class="d-flex flex-nowrap gap-2">
+      <ng-container
+        *ngFor="let campaign of campaignData; let indexCampaign = index"
+      >
+        <div
+          class="card overflow-hidden campaign"
+          [attr.active]="indexCampaign === currentCampaign"
+          (click)="onSelectCampaign(indexCampaign)"
+          [attr.data-testid]="'campaign-' + campaign.campaignName"
+        >
+          <div class="c-header p-2">
+            <div class="campaign-img full-wh">
+              <img
+                class="full-wh"
+                [src]="campaign.icon || 'assets/images/logo-ais.png'"
+                [attr.data-testid]="'campaignIcon-' + campaign.campaignName"
+              />
+            </div>
+            <div class="ps-2">
+              <h6
+                class="m-0"
+                [attr.data-testid]="'campaignName-' + campaign.campaignName"
+              >
+                {{ campaign.campaignName }}
+              </h6>
+              <hr class="m-0" />
+              <span
+                class="m-0 snd-text text-detail-size"
+                [attr.data-testid]="'customerCriteria-' + campaign.campaignName"
+                >สำหรับ{{ customerCriteria }}</span
+              >
+            </div>
+          </div>
+          <div class="c-detail-container p-3 snd-text">
+            <div class="c-detail">
+              <i class="bi bi-phone"></i>
+              <div>
+                <div>
+                  <label>เครื่อง</label
+                  ><label *ngIf="customerCriteria !== 'เครื่องเปล่าราคาปกติ'"
+                    >+ แพ็คเกจ</label
+                  >
+                  <label *ngIf="customerCriteria === 'เครื่องเปล่าราคาปกติ'"
+                    >เปล่า</label
+                  >
+                </div>
+                <div
+                  *ngIf="campaign.payAdvanceFlag"
+                  [attr.data-testid]="'payAdvanceFlag-' + campaign.campaignName"
+                >
+                  พร้อมชำระค่าบริการ
+                </div>
+              </div>
+            </div>
+            <div class="c-detail" *ngIf="campaign.fullPaymentFlag">
+              <i class="bi bi-credit-card"></i>
+              <div [attr.data-testid]="'fullPayment-' + campaign.campaignName">
+                ชำระเต็มจำนวน
+              </div>
+            </div>
+            <div class="c-detail" *ngIf="campaign.installmentFlag">
+              <i class="bi bi-credit-card"></i>
+              <div
+                [attr.data-testid]="'installmentFlag-' + campaign.campaignName"
+              >
+                ผ่อน<a *ngIf="flow !== 'AIS'">ชำระ</a>
+                <a *ngIf="flow === 'AIS'">0%</a>สูงสุด
+                {{ campaign.maxInstallmentTerm }} เดือน
+              </div>
+            </div>
+            <div class="c-detail" *ngIf="campaign.maximumContract > 0">
+              <i class="bi bi-file-earmark-medical"></i>
+              <div
+                [attr.data-testid]="'maximumContract-' + campaign.campaignName"
+              >
+                สัญญา {{ campaign.maximumContract }} เดือน
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+<app-skeleton-loading
+  *ngIf="!campaignData"
+  type="campaign"
+  [count]="4"
+></app-skeleton-loading>
+<div
+  class="my-5 row text-center"
+  *ngIf="campaignData && campaignData.length <= 0"
+  data-testid="showErrorCampaign"
+>
+  <h5>ไม่พบข้อมูลแคมเปญ</h5>
+</div>

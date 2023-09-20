@@ -1,0 +1,51 @@
+<div
+  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-center align-items-center mt-3"
+>
+  <div class="container-fluid mt-3 number-list-container border-page">
+    <ng-container *ngIf="allNumber.length > 0">
+      <div *ngFor="let item of allNumber; let i = index">
+        <img
+          *ngIf="item.mobileSegment !== 'Classic' && item?.isShowIcon"
+          [src]="'assets/SRN-Icon_' + item.mobileSegment + '.png'"
+          alt="image-srn"
+        />
+        <label data-testid="radio-number" class="container mt-3">
+          <div class="d-flex align-items-center text-justify col">
+            {{ item.mobileNo }}
+            <ul>
+              <li
+                class="ml-5 txt-status-active"
+                *ngIf="item.status == 'Active'"
+              >
+                Active
+              </li>
+              <li
+                class="ml-5 txt-status-suspend"
+                *ngIf="item.status != 'Active'"
+              >
+                Suspend
+              </li>
+            </ul>
+          </div>
+          <input
+            class="custom-radio"
+            type="radio"
+            name="number-group"
+            [value]="item.mobileNo"
+            id="gold-{{ i }}"
+            (click)="onValue(item.mobileNo)"
+          />
+          <label for="gold-{{ i }}"></label>
+        </label>
+        <hr
+          class="custom-hr"
+          [style.border]="
+            allNumber[i].mobileSegment !== allNumber[i + 1]?.mobileSegment
+              ? ' 1px solid #8BC540'
+              : 'custom-hr'
+          "
+        />
+      </div>
+    </ng-container>
+  </div>
+</div>

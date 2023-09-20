@@ -1,0 +1,44 @@
+<layout
+  [backUrl]="backUrl"
+  [isShowFooter]="true"
+  titlePageName="เช็คสิทธิ์"
+  [isShowIconCart]="true"
+  [isShowCustomerDetail]="false"
+>
+  <div>
+    <div class="row heightvh">
+      <div class="d-flex align-items-end justify-content-center">
+        <div class="txt-header">กรุณากรอกเบอร์โทรศัพท์</div>
+      </div>
+      <div class="col-7 col-sm-7 col-md-7 col-lg-6 col-xl-6 mx-auto mt-4">
+        <input
+          type="text"
+          class="form-control custom-input"
+          data-testid="mobileNumber"
+          maxlength="10"
+          [formControl]="mobileNoAndIdNoInput"
+          onlyNumber
+        />
+      </div>
+    </div>
+  </div>
+
+  <div footer-layout>
+    <div class="button">
+      <app-button-next
+        class="m-2"
+        [ngClass]="{ disabled: false }"
+        [isPrimary]="false"
+        (click)="goback()"
+        [textButton]="back"
+        type="button"
+      ></app-button-next>
+      <app-button-next
+        class="m-2"
+        [ngClass]="{ disabled: activeNextBtn }"
+        (click)="onNext()"
+        type="button"
+      ></app-button-next>
+    </div>
+  </div>
+</layout>

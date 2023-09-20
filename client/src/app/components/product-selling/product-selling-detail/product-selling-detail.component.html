@@ -1,0 +1,84 @@
+<div class="product-detail-container" *ngIf="productDetail">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-4 flex-center">
+        <ng-container *ngIf="!isEmptyImage">
+          <div class="flex-center product-image-preview">
+            <img src="{{ imageActive }}" class="contain-fit-image" data-testid="coverImageProduct" />
+          </div>
+          <div class="row justify-content-center" [style.gap]="'8px'">
+            <div class="col-lg-3 col-md-3 col-sm-6 flex-center product-image-preview-mini"
+              *ngFor="let image of imageList; let indexImage = index" [attr.data-testid]="'image-' + indexImage"
+              (click)="onSelectImage(image)" [style.border-color]="
+                image === imageActive ? 'var(--mc-primary-color)' : ''
+              ">
+              <img src="{{ image }}" class="contain-fit-image" />
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="isEmptyImage">
+          <p data-testid="noProductImage">ไม่มีรูปสินค้า</p>
+        </ng-container>
+      </div>
+      <div class="col-8 product-detail">
+        <p class="product-name" data-testid="productName">
+          {{ productDetail.productName }}
+        </p>
+        <p class="product-price" data-testid="productPrice">
+          ราคา {{ numberWithComma(productDetail.normalPrice) }} บาท
+        </p>
+        <ng-container *ngIf="isStockError && !isScanImei">
+          <app-result-failed></app-result-failed>
+        </ng-container>
+        <div class="product-color-loading" *ngIf="productColors.length === 0 && !isStockError &&  !isScanImei">
+          <app-loading></app-loading>
+        </div>
+        <div class="product-color-container" *ngIf="productColors.length > 0 && !isStockError">
+          <p data-testid="labelSelectColor">เลือกสี</p>
+          <div class="row">
+            <div class="col-3 flex-center color-container" *ngFor="let color of productColors; let indexColor = index">
+              <button class="flex-center selected-color" (click)="onSelectColor(color.colorId)"
+                [attr.data-testid]="'selectColor-' + color.name" [style.border-color]="
+                  color.colorId === colorActive ? 'var(--mc-primary-color)' : ''
+                " [disabled]="this.stockConfig?.subStockCode && +color.stock == 0">
+                <div class="product-color" [style.background-color]="color.code"></div>
+              </button>
+              <div class="product-color-detail">
+                <p class="product-color-name" [attr.data-testid]="'lableColor-' + color.name">
+                  {{ color.name }}
+                </p>
+                <ng-container *ngIf="this.stockConfig?.subStockCode">
+                  <p class="product-color-stock" [attr.data-testid]="'inventories-' + color.name">
+                    สินค้าคงเหลือ
+                    <span [attr.data-testid]="'qty' + color.name">{{
+                      color.stock
+                      }}</span>
+                    ชิ้น
+                  </p>
+                  <p *ngIf="+color.stock === 0" style="color: #ff0000" [attr.data-testid]="'stockStatus-' + color.name">
+                    {{
+                    stockOnline[color.name] ? "Stock Online" : "Out of Stock"
+                    }}
+                  </p>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="flex-center product-stock-container">
+  <p data-testid="lableStock">จำนวน</p>
+  <div class="flex-center product-stock">
+    <button class="flex-center" [disabled]="isDisabledDecreaseStock" (click)="onDecrease()"
+      data-testid="buttonDecreaseStock">
+      -
+    </button>
+    <input type="number" value="{{ stock }}" [(ngModel)]="stock" data-testid="stock" disabled />
+    <button class="flex-center" (click)="onIncrease()" data-testid="buttonIncreaseStock" disabled>
+      +
+    </button>
+  </div>
+</div>

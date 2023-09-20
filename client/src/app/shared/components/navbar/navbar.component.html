@@ -1,0 +1,45 @@
+<nav class="navbar bg-nav px-3">
+  <div class="container-md">
+    <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <div class="float-start">
+        <img
+          src="assets/images/icon-arrow-right.png"
+          class="icon icon-back"
+          data-testid="buttonBack"
+          (click)="backPage()"
+          *ngIf="isShowIconBack"
+        />
+      </div>
+    </div>
+    <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 text-center">
+      <div class="txt-title" data-testid="textTitlePageName">
+        {{ titlePageName }}
+      </div>
+    </div>
+    <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <div class="d-flex float-end">
+        <div class="position-relative" *ngIf="isShowIconCart">
+          <img
+            src="assets/images/cart.png"
+            class="icon icon-cart"
+            data-testid="buttonCart"
+            (click)="gotoCartPage()"
+          />
+          <div
+            class="total-product-selected"
+            data-testid="totalProductSelected"
+            *ngIf="cartService.cartCount > 0"
+          >
+            {{ cartService.cartCount }}
+          </div>
+        </div>
+        <img
+          src="assets/images/home.png"
+          class="icon icon-home"
+          data-testid="buttonHome"
+          (click)="gotoHomePage()"
+        />
+      </div>
+    </div>
+  </div>
+</nav>

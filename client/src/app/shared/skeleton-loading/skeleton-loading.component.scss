@@ -1,0 +1,8 @@
+.scrolling-container {
+    display: -webkit-inline-box;
+    width: 100%;
+    gap: 8px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding-bottom: 16px;
+  }

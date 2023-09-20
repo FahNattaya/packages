@@ -1,0 +1,30 @@
+<div class="brands-container" *ngIf="isSearch">
+  <div class="container-md">
+    <app-continuous-scrolling [isTwoRows]="true">
+      <ng-container *ngIf="brands$ | async as brands">
+        <div
+          *ngFor="let brand of brands"
+          class="brand-item"
+          [ngClass]="{
+            selected: checkBrandIsSelected(brand.name)
+          }"
+          (click)="
+            isStock ? onSelectBrand(brand.name) : onSelectBrands(brand.name)
+          "
+          [attr.data-testid]="'selectedBrand-' + brand.name"
+        >
+          <app-image-loader
+            [src]="brand.imageUrl"
+            imageClass="brand-image"
+          ></app-image-loader>
+          <div *ngIf="!brand.imageUrl">{{ brand.name }}</div>
+        </div>
+      </ng-container>
+    </app-continuous-scrolling>
+    <app-skeleton-loading
+      *ngIf="!(brands$ | async)"
+      type="brand"
+      [count]="14"
+    ></app-skeleton-loading>
+  </div>
+</div>

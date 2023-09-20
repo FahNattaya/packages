@@ -1,0 +1,53 @@
+<layout [backUrl]="backPageUrl" titlePageName="ตะกร้าสินค้า" [isShowFooter]="true">
+  <div class="container-md">
+    <app-step-bar stepWaiting="cart"></app-step-bar>
+    <div class="loading-container" *ngIf="isLoading">
+      <app-loading></app-loading>
+    </div>
+    <ng-container *ngIf="!isLoading">
+      <app-cart (disablePayNow)="getCartStatus($event)"
+        (onSetProductEditable)="onSetProductEditable($event)"></app-cart>
+    </ng-container>
+  </div>
+  <div class="button-summary" footer-layout>
+    <app-button-next type="button" [textButton]="textCommitButton" [isPrimary]="false" (click)="onBuyMore()"></app-button-next>
+    <app-button-next type="button" [textButton]="textPayNowButton" (click)="onPayNow()"
+      [ngClass]="{ disabled: disablePayNow }"></app-button-next>
+  </div>
+</layout>
+
+<div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasPackage">
+  <div class="offcanvas-header">
+    <div></div>
+    <h5 class="offcanvas-title">แก้ไขข้อมูลแพ็คเกจ</h5>
+    <i class="bi bi-x-lg" data-bs-dismiss="offcanvas"></i>
+  </div>
+  <div class="offcanvas-body small">
+    <ng-container *ngIf="typeEdit === 'package'">
+      <app-product-selling-package [isCart]="true" [isSelectedTrade]="true" [productEditable]="productEditable">
+      </app-product-selling-package>
+    </ng-container>
+  </div>
+  <div class="button-summary">
+    <app-button-next  type="button" textButton="CANCEL" [isPrimary]="false" data-bs-dismiss="offcanvas"></app-button-next>
+    <app-button-next  type="button" textButton="SAVE" (click)="onSavePackage()"></app-button-next>
+  </div>
+</div>
+
+<div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasMobileCare">
+  <div class="offcanvas-header">
+    <div></div>
+    <h5 class="offcanvas-title">แก้ไขข้อมูลความคุ้มครอง</h5>
+    <i class="bi bi-x-lg" data-bs-dismiss="offcanvas"></i>
+  </div>
+  <div class="offcanvas-body small">
+    <ng-container *ngIf="typeEdit === 'mobile_care' ">
+      <app-mobile-care [isCart]="true" [productEditable]="productEditable"
+        (selectedChange)="onSetDataSelectedMobileCare($event)"></app-mobile-care>
+    </ng-container>
+  </div>
+  <div class="button-summary">
+    <app-button-next  type="button" textButton="CANCEL" [isPrimary]="false" data-bs-dismiss="offcanvas"></app-button-next>
+    <app-button-next  type="button" textButton="SAVE" (click)="onSaveMobileCare()"></app-button-next>
+  </div>
+</div>

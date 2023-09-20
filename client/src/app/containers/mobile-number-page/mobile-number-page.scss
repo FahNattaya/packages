@@ -1,0 +1,9 @@
+.heightvh {
+  height: calc(100vh - 200px);
+}
+.button {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 30px 0;
+}

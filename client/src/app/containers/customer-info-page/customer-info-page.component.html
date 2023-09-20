@@ -1,0 +1,43 @@
+<layout [backUrl]="backPageUrl" [isShowFooter]="true" titlePageName="ข้อมูลลูกค้า" [isShowIconCart]="false"
+  [isShowCustomerDetail]="false">
+  <div class="container-md mt-5">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center mt-5">
+        <img src="assets/images/Group5.jpg" class="img-fluid" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center mt-4">
+        <div class="txt-success" data-testid="verify-successful">
+          ตรวจสอบสำเร็จ
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center mt-2">
+        <div class="txt-content" data-testid="pull-id-card">
+          กรุณาดึงบัตรประชาชนออก
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 customer-info">
+        <div class="col-8">
+          <p class="txt-content" data-testid="title-customer-info">
+            ข้อมูลตามบัตรประชาชน
+          </p>
+          <p data-testid="customer-name">{{ customerProfile?.customerName }}</p>
+          <p data-testid="customer-identity">
+            เลขที่บัตรประชาชน {{ customerProfile.identityNo }}
+          </p>
+          <p data-testid="customer-address">
+            {{ customerProfile.customerAddress }}
+          </p>
+        </div>
+        <i *ngIf="!customerProfile?.imageReadSmartCard" class="bi bi-person"
+          data-testid="customer-img-id-card-mock"></i>
+        <img *ngIf="customerProfile?.imageReadSmartCard" data-testid="customer-img-id-card"
+          [src]="customerProfile?.imageReadSmartCard" alt="Image" />
+      </div>
+    </div>
+  </div>
+  <div footer-layout class="d-flex justify-content-evenly w-100">
+    <app-button-next type="button" (click)="onClick()" [isPrimary]="true"></app-button-next>
+  </div>
+</layout>

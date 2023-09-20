@@ -1,0 +1,34 @@
+import express, { NextFunction, Request } from 'express';
+import AuthRoute from '../modules/auth/auth.route';
+import Cart from '../modules/cart/cart.route';
+import CustomersRoute from '../modules/customer/customer.route';
+import DocumentRoute from '../modules/e-document/e-document.route';
+import LocationRoute from '../modules/location/location.route';
+import ConfigRoute from '../modules/mc-config/mc-config.route';
+import PaymentRoute from '../modules/payment/payment.route';
+import PrivilegeRoute from '../modules/privilege/privilege.route';
+import { default as ProductPackageRoute } from '../modules/product-package/product-package.route';
+import ProductRoute from '../modules/product/product.route';
+import PromotionRoute from '../modules/promotion/promotion.route';
+import QueueRoute from '../modules/queue/queue.route';
+import ServiceCare from '../modules/service-care/service-care.route';
+const router = express.Router();
+router.use('/api/v1/auth', AuthRoute);
+router.use('/api/v1/customer', CustomersRoute);
+router.use('/api/v1/payment', PaymentRoute);
+router.use('/api/v1/promotion', PromotionRoute);
+router.use('/api/v1/product', ProductRoute);
+router.use('/api/v1/e-document', DocumentRoute);
+router.use('/api/v1/product-package', ProductPackageRoute);
+router.use('/api/v1/privilege', PrivilegeRoute);
+router.use('/api/v1/service-care', ServiceCare);
+router.use('/api/v1/cart', Cart);
+router.use('/api/v1/location', LocationRoute);
+router.use('/api/v1/mc/config', ConfigRoute);
+router.use('/api/v1/queue', QueueRoute);
+router.use('*', (req: Request, res, next: NextFunction) => {
+	const err = Error(`Requested path ${req.baseUrl} not found`);
+	next(err);
+});
+
+export default router;

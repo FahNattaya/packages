@@ -1,0 +1,35 @@
+.header-layout {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.body-layout {
+  height: calc(100% - 60px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.body-layout.customer {
+  height: calc(100% - 116px);
+}
+
+.body-layout.footer {
+  padding-bottom: 124px;
+}
+
+.footer-layout {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  background-color: #fff;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

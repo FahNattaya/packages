@@ -1,0 +1,34 @@
+.seller-container {
+  border: 1px solid var(--mc-gray-200);
+  background-color: var(--mc-gray-50);
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.seller-container h6 {
+  font-weight: 600;
+}
+
+.seller-form h6 {
+  margin-bottom: 0;
+}
+
+.seller-form {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--mc-primary-color);
+  background-color: var(--mc-white-color);
+}
+
+.seller-info {
+  padding: 4px;
+}
+
+.input-code-seller {
+  width: 100%;
+  border: 1px solid var(--mc-primary-color);
+  padding: 4px;
+  border-radius: 8px;
+  outline: none;
+}

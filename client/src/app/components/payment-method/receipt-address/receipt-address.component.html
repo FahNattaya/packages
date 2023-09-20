@@ -1,0 +1,113 @@
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <div class="list-method">
+      <a
+        class="btn collapse-list"
+        [attr.aria-controls]="'collapseReceipt'"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseReceipt"
+        role="button"
+      >
+        <p data-testid="receiptAddressTitle">ใบกำกับภาษี/ข้อมูลผู้ติดต่อ</p>
+        <div class="d-flex">
+          <i
+            class="bi pt-2"
+            data-testid="icon-address"
+            [ngClass]="
+              collapseReceipt.classList.contains('show')
+                ? 'bi-chevron-up'
+                : 'bi-chevron-down'
+            "
+          ></i>
+        </div>
+      </a>
+      <div class="collapse" id="collapseReceipt" #collapseReceipt>
+        <div class="container-md">
+          <div class="address-container">
+            <div class="addr-phone-container" [hidden] = "isLoanSelected">
+              <div><span>เบอร์มือถือ: </span></div>
+
+              <input
+                class="form-control"
+                type="tel"
+                maxlength="10"
+                [placeholder]="'phone number'"
+                [formControl]="mobileNumber"
+                [value]="mobileNumber.value"
+                data-testid="addressPhoneNumberInput"
+              />
+              <button
+                class="btn"
+                data-testid="addressPhoneNumberConfirm"
+                (click)="getAddress()"
+              >
+                ยืนยัน
+              </button>
+            </div>
+            <ng-container *ngFor="let address of customerAddress">
+              <label
+                class="address"
+                [attr.data-testid]="'address' + address.key"
+                *ngIf="address.address"
+              >
+                <div>
+                  <p class="fw-bold mb-0">
+                    {{ address.name }}
+                  </p>
+                  <span>{{ mapAddress(address.address!) }}</span>
+                </div>
+                <input
+                  type="radio"
+                  [formControl]="selectedAddress"
+                  [value]="address.key"
+                  (click)="onSelectAddress(address)"
+                  name="billing-address"
+                />
+              </label>
+            </ng-container>
+            <ng-container
+              *ngFor="let address of newAddress; let newAddrIndex = index"
+            >
+              <label
+                class="address editable"
+                [attr.data-testid]="address.key + newAddrIndex"
+                *ngIf="address.address"
+              >
+                <div>
+                  {{ address.name }}<br />
+                  {{ mapAddress(address.address!) }}
+                </div>
+                <div class="btn">
+                  <i
+                    class="bi edit-color bi-pencil-square"
+                    [attr.data-testid]="address.key + 'Edit' + newAddrIndex"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#receiptForm"
+                  ></i>
+                </div>
+                <input
+                  type="radio"
+                  name="billing-address"
+                  [formControl]="selectedAddress"
+                  [value]="address.key"
+                  (click)="onSelectAddress(address)"
+                />
+              </label>
+            </ng-container>
+            <label
+              *ngIf="newAddress.length == 0"
+              class="address add-address"
+              data-testid="newAddressButton"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#receiptForm"
+              [hidden] = "isLoanSelected"
+            >
+              <i class="bi bi-plus"></i>
+              <span>เพิ่มที่อยู่ใหม่</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

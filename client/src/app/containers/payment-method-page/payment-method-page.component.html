@@ -1,0 +1,142 @@
+<layout
+  [backUrl]="backPageUrl"
+  [isShowFooter]="true"
+  titlePageName="รายการสั่งซื้อสินค้า"
+>
+  <div class="container-md mt-3">
+    <app-step-bar stepWaiting="payment"></app-step-bar>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="list-payment">
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <a
+                class="btn collapse-list"
+                (click)="onToggleCollapse('productCart')"
+                [attr.aria-controls]="'collapsePayment'"
+                role="button"
+              >
+                <p data-testid="productListTitle">รายการสินค้า</p>
+                <i
+                  class="bi"
+                  [ngClass]="getIconChevron('productList')"
+                  data-testid="icon-order-list"
+                ></i>
+              </a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <div
+                class="collapse"
+                id="collapsePayment"
+                [ngClass]="{ show: onCheckCollapse('productCart') }"
+              >
+                <div class="card card-body">
+                  <div class="container-md">
+                    <app-cart
+                      [isPayment]="true"
+                      (emitSummaryPrice)="getSummaryPrice($event)"
+                    ></app-cart>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="list-method">
+          <a
+            class="btn collapse-list"
+            (click)="onToggleCollapse('paymentHandset')"
+            [attr.aria-controls]="'collapsePayment'"
+            role="button"
+          >
+            <p data-testid="paymentListTitle">ชำระเงิน</p>
+            <div class="d-flex">
+              <div class="card card-right">
+                <label class="checkbox" data-testid="cart-list-checkbox"
+                  >แยกชำระ
+                  <input type="checkbox" checked="checked" />
+                  <i class="bi bi-check2 checkmark"></i>
+                </label>
+              </div>
+              <i
+                class="bi pt-2"
+                [ngClass]="getIconChevron('paymentHandset')"
+                data-testid="icon-payment"
+              ></i>
+            </div>
+          </a>
+          <div
+            class="collapse"
+            id="collapsePayment"
+            [ngClass]="{ show: onCheckCollapse('paymentHandset') }"
+          >
+            <!-- <div class="container-md">
+              <app-payment-method
+                [(buttonState)]="isPaymentMethodSelected"
+                #payment
+              ></app-payment-method>
+            </div> -->
+            <div class="pb-3">
+              <div class="collapsed-container">
+                <app-payment-method-handset
+                  [onToggleCollapse]="onBlindToggleCollapse"
+                  [onCheckCollapse]="onBlindCheckCollapse"
+                  [getIconChevron]="getIconChevron"
+                  [productDetail]="productDetail!"
+                  (paymentSelected)="getHandsetPaymentSelected($event)"
+                  (buttonStateChangeHandset)="
+                    getbuttonStateChangePartner($event)
+                  "
+                >
+                </app-payment-method-handset>
+              </div>
+              <ng-container>
+                <div class="collapsed-container" *ngIf="isAppleCare">
+                  <app-payment-method-apple-care
+                    [onToggleCollapse]="onBlindToggleCollapse"
+                    [onCheckCollapse]="onBlindCheckCollapse"
+                    [getIconChevron]="getIconChevron"
+                    [productDetail]="productDetail"
+                    (paymentSelected)="getMobileCarePaymentSelected($event)"
+                  >
+                  </app-payment-method-apple-care>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-receipt-address
+      (isReceiptAddressSelected)="setSelectedReceiptStatus($event)"
+      #receipt_address
+    >
+    </app-receipt-address>
+    <app-seller-information></app-seller-information>
+
+    <div class="total-order-summary" data-testid="totalOrderSummary">
+      <div>สรุปรายการสั่งซื้อ</div>
+      <div data-testid="totalPriceSummary">
+        {{ summaryPrice | number : "1.2-2" }} บ.
+      </div>
+    </div>
+  </div>
+  <div footer-layout>
+    <app-button-next
+      type="button"
+      (click)="onNext()"
+      [ngClass]="{ disabled: buttonState }"
+    ></app-button-next>
+  </div>
+</layout>
+<div class="loading-container" *ngIf="isLoading">
+  <app-loading></app-loading>
+</div>
+<app-receipt-address-form> </app-receipt-address-form>

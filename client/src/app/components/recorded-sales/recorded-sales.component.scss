@@ -1,0 +1,22 @@
+.extra-space{
+    height: 250px;
+}
+
+.container-md {
+    align-items: center;
+    display: flex;
+    height: 100%;
+}
+
+.header{
+    position: absolute;
+}
+
+.icon-protection {
+    height: 40px;
+}
+
+.printer-button {
+    border-color: var(--mc-primary-color);
+    color: var(--mc-primary-color);
+}

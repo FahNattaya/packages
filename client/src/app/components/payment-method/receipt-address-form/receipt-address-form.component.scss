@@ -1,0 +1,43 @@
+.offcanvas.offcanvas-bottom {
+  height: 100%;
+}
+
+.offcanvas-title {
+  color: var(--mc-primary-color);
+}
+
+.red-flag {
+  color: red;
+}
+
+.auto-complete {
+  border-radius: 5px !important;
+  border-color: aliceblue !important;
+  border-radius: var(--bs-border-radius) !important;
+}
+
+.col-form-label {
+  white-space: pre;
+}
+
+.button-form {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.error-text {
+  font-size: 0.875em;
+  color: var(--bs-form-invalid-color);
+  white-space: pre;
+  margin-top: 6px;
+}
+
+.border-error {
+  border: 1px solid var(--bs-form-invalid-color);
+  padding: 0px;
+  border-radius: 0.375rem;
+  width: 81%;
+  margin: auto;
+}

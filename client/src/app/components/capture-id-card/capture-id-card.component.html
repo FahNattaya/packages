@@ -1,0 +1,29 @@
+<div class="container capture-container">
+  <p class="title">ถ่ายรูปบัตรประชาชน</p>
+  <div *ngIf="permission && !isError" class="d-flex row justify-content-center">
+    <div *ngIf="!image" class="d-flex justify-content-center">
+      <webcam
+        data-testid="cameraIdCard"
+        [trigger]="$trigger"
+        (imageCapture)="onSnapshot($event)"
+        [allowCameraSwitch]="false"
+        [imageQuality]="1"
+      ></webcam>
+    </div>
+    <div *ngIf="image" class="d-flex justify-content-center">
+      <img [src]="image" alt="capture-image"/>
+    </div>
+    <button
+      class="capture-button"
+      data-testid="captureIdCard"
+      (click)="onCaptureImage()"
+    >
+      <i class="bi bi-camera-fill"></i>
+      {{ textButton }}
+    </button>
+  </div>
+  <div *ngIf="isError" class="permission-denied">
+    <h1>Access to Camera has been denied.</h1>
+    <p>Fail to obtain camera permission. Please try again.</p>
+  </div>
+</div>

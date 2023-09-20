@@ -1,0 +1,58 @@
+<div class="container-fluid" style="display: flex; justify-content: center; align-items: center;">
+    <div class="card mt-3">
+        <div class="card-body">
+            <div class="flex-wrap" style="text-align: center">
+                <img data-testid="icon-success" src="assets/Vector.png" class="success-icon"
+                    style="width: 50px; height: 50px" />
+                <div data-testid="text-success" class="text-justify p-2" style="color: #8cc540">ทำรายการสำเร็จ</div>
+                <div data-testid="phone-number" class="text-justify phone-number" style="color: #8cc540"
+                    [appPhoneNumbeMarkrFormat]="(customerData$ | async)?.mobileNo">
+                </div>
+                <!-- {{maskPhoneNumber((customerData$ | async)?.mobileNo)}} -->
+                <div data-testid="text-1" class="text-justify mt-2" style="color: #8cc540">
+                    รายการสั่งซื้อของท่านได้เข้าสู่ระบบเรียบร้อยแล้ว
+                </div>
+            </div>
+            <div class="row" *ngIf="productDetailData$ | async as product">
+                <table>
+                    <tr>
+                        <td data-testid="list-of-product"><b>รายการสินค้า </b> <span
+                                style="font-size: 13px; color: red;">(รอชำระ)</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <li>
+                                {{ product.productName }}
+                                <span *ngIf="(paymentData$ | async)?.paymentType === 'installment'"
+                                    class="status installment">
+                                    ผ่อนชำระ
+                                </span>
+                            </li>
+                        </td>
+                        <td class="text-ais-color" [appPriceDecimalFormat]="product.normalPrice">
+                        </td>
+                    </tr>
+                    <tr *ngIf="serviceCareData$ | async as service">
+                        <ng-container>
+                            <td>
+                                <li>
+                                    {{ service.option.name }}
+                                </li>
+                                <span *ngIf="service.title === 'AIS Mobile Care'"
+                                    class="ais-mobile-care-span">ค่าบริการรายเดือน AIS Mobile Care
+                                    จะเรียกเก็บรวมในใบแจ้งค่าใช้บริการ</span>
+                            </td>
+                            <td *ngIf="service.title === 'AppleCare+'" class="text-ais-color"
+                                [appPriceDecimalFormat]="service.option.price"
+                                >
+                            </td>
+                            <td *ngIf="service.title === 'AIS Mobile Care'" class="text-ais-color">
+                                0.00 บ.
+                            </td>
+                        </ng-container>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

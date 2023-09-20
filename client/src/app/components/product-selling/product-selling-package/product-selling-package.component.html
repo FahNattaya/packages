@@ -1,0 +1,42 @@
+<ng-container *ngIf="isSelectedTrade">
+  <div class="row" *ngIf="currentPackageData$ | async as currentPackage ">
+    <div data-testid="packageInfo" class="d-flex col">
+      <div data-testid="packageInfoIcon" class="info-icon d-flex justify-content-center align-items-center">
+        <i class="bi bi-file-earmark-text icon-style"></i>
+      </div>
+      <div data-testid="packageInfoWord" class="ms-2 d-flex align-items-center col">
+        ข้อมูลแพ็กเกจ
+      </div>
+    </div>
+    <div class="col-12">
+      <div data-testid="headerCurrentPackage" class="header mt-2 col-12">
+        <div class="text-header">แพ็กเกจปัจจุบัน</div>
+      </div>
+      <div class="col d-flex flex-column">
+        <div class="col border-current-package-box">
+          <div data-testid="descriptionOverview" class="p-2">
+            <div data-testid="packageName" class="ms-2 text-justif ais-text-color">
+              {{currentPackage.name}}
+            </div>
+            <div data-testid="packageDescription" class="ms-2 mt-1 text-justify">
+              {{ currentPackage.description }}
+            </div>
+            <div data-testid="packageEndDate" *ngIf="currentPackage.endDate" class="ms-2 mt-1 text-justify">
+              สิ้นสุด {{currentPackage.endDate }}
+            </div>
+          </div>
+        </div>
+        <div
+          *ngIf="isRequireChangePack"
+          data-testid="box-radio" class="d-flex col border-current-package-box p-2">
+          <input data-testid="radio-current-package" type="radio" [formControl]="selectedCurrentPack"
+            [value]="currentPackage.name + currentPackage.price" (click)="checkSelectedRadio()" name="package" id="current-package" />
+          <label data-testid="radioLabelCurrentPackage" for="current-package"
+            class="ais-text-color ms-2 radio-label">ใช้แพ็กเกจเดิม</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<app-package-list  [tradeData]="tradeData" [selectedPackage]="selectedCurrentPack"></app-package-list>

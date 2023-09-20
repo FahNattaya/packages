@@ -1,0 +1,32 @@
+<div class="container-md" *ngIf="modelNameList.length > 0">
+  <h3 class="title" data-testid="textModelStock">Model</h3>
+  <div
+    *ngIf="!isEmptyModel && !(isLoading$ | async)"
+    data-testid="modelCarouselList"
+  >
+    <app-continuous-scrolling
+      [isTwoRows]="true"
+      [isHiddenScrolling]="modelNameList.length <= 4"
+    >
+      <ng-container
+        *ngFor="let modelName of modelNameList; let modelIndex = index"
+      >
+        <div
+          class="model"
+          [attr.data-testid]="'model-' + modelName"
+          [attr.active]="modelActive === modelIndex"
+          (click)="selectModel(modelIndex)"
+        >
+          {{ modelName }}
+        </div>
+      </ng-container>
+    </app-continuous-scrolling>
+  </div>
+  <div
+    class="row text-center"
+    *ngIf="isEmptyModel"
+    data-testid="textEmptyModel"
+  >
+    <h3>ไม่พบข้อมูล Model</h3>
+  </div>
+</div>

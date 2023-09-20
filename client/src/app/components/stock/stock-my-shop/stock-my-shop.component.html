@@ -1,0 +1,56 @@
+<div class="action-container" *ngIf="isLoading$ | async">
+  <app-loading></app-loading>
+</div>
+<div class="container-md" *ngIf="!(isLoading$ | async) && (isLoaded$ | async)">
+  <h3 class="title" [attr.data-testid]="'locationName-' + shopName">
+    {{ shopName }}
+  </h3>
+  <table class="table" *ngIf="!isEmptyStock" aria-describedby="stock-my-shop">
+    <thead>
+      <tr class="header">
+        <th colspan="2">Brand/Model</th>
+        <th>Color</th>
+        <th>QTY</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let stockData of stockListData">
+        <ng-container
+          class="mx-2"
+          *ngFor="let productStock of stockData.productStock"
+        >
+          <td
+            colspan="3"
+            class="product-label"
+            [attr.data-testid]="productStock.productName"
+          >
+            {{ productStock.productName }}
+          </td>
+          <td class="product-label-stock" data-testid="productTotalQty">
+            {{ productStock.totalStockAval }}
+          </td>
+          <ng-container *ngFor="let colorStock of productStock.colorStock">
+            <tr
+              [attr.data-testid]="
+                productStock.productName + '-' + colorStock.color
+              "
+            >
+              <td colspan="2"></td>
+              <td>{{ colorStock.color }}</td>
+              <td
+                [attr.data-testid]="
+                  productStock.productName + '-' + colorStock.color + 'Stock'
+                "
+              >
+                {{ colorStock.stockAval }}
+              </td>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
+<div class="action-container" *ngIf="(isLoaded$ | async) && errorText">
+  {{ errorText }}
+</div>

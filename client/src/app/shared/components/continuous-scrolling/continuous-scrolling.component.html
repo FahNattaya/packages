@@ -1,0 +1,10 @@
+<div
+  class="scrolling-container"
+  [ngClass]="{
+    'separate-rows': isTwoRows,
+    'hidden-scrolling': isHiddenScrolling,
+    'none-scroll-bar': !isShowScrollBar
+  }"
+>
+  <ng-content></ng-content>
+</div>

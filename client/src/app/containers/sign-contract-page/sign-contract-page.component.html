@@ -1,0 +1,45 @@
+<layout
+  [backUrl]="backPageUrl"
+  titlePageName="เซ็นสัญญา"
+  [isShowFooter]="true"
+  (click)="saveSign()"
+>
+  <div class="container sign-container">
+    <p class="title">เช็นต์ยืนยันข้อมูล</p>
+    <div class="text-center">{{ content }}</div>
+    <div class="sigpad-container">
+      <p class="sign-label">เช็นต์บริเวณนี้</p>
+      <canvas
+        id="sign-sigpad"
+        class="sigpad-input"
+        data-testid="inputSignPad"
+      ></canvas>
+      <div class="footer-sign">
+        <p>{{ getCurrentData() }}</p>
+        <button
+          type="button"
+          data-testid="buttonClearSign"
+          class="clear-sign-button"
+          (click)="onClearSignature()"
+        >
+          <i class="bi bi-pen"></i>เคลียร์ลายเซ็น
+        </button>
+      </div>
+    </div>
+  </div>
+  <div footer-layout class="d-flex justify-content-evenly w-100">
+    <app-button-next
+      type="button"
+      [textButton]="textCancelButton"
+      [isPrimary]="false"
+      (click)="onBack()"
+    ></app-button-next>
+    <app-button-next
+      type="button"
+      [textButton]="textCommitButton"
+      [isPrimary]="true"
+      (click)="onNext()"
+      [ngClass]="{ disabled: !isSigned() }"
+    ></app-button-next>
+  </div>
+</layout>

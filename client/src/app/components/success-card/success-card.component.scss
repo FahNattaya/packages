@@ -1,0 +1,51 @@
+.card-body {
+    border-radius: 6px;
+}
+
+.card {
+    padding-left: 15px;
+    background-color: #fafafa;
+    border-radius: 10px;
+    border: 0px;
+    width: 600px;
+}
+
+.phone-number {
+    border: 0px;
+    background-color: #8CC5401F;
+    border-radius: 5px;
+    width: fit-content;
+    padding: 3px 15px 3px 15px;
+    display: inline;
+}
+
+.success-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.status {
+    font-size: 11px;
+    border-radius: 5px;
+    padding: 2px 7px 2px 7px;
+}
+
+.installment {
+    background-color: rgba(255, 177, 26, 0.15);
+    color: #FFB11A;
+}
+
+.fullPaid {
+    background-color: #8CC5401F;
+    color: #8cc540;
+
+}
+
+.text-ais-color {
+    color: var(--mc-primary-color);
+}
+
+.ais-mobile-care-span {
+    color: red;
+    font-size: 12px;
+}

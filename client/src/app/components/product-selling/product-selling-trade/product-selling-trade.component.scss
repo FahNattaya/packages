@@ -1,0 +1,62 @@
+.campaign-name {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.campaign-name p {
+  margin: 0 8px 0;
+}
+
+.campaign-name > img {
+  object-fit: cover;
+}
+
+.campaign-name.default > img {
+  object-fit: contain;
+}
+
+.scroll-item {
+  cursor: pointer;
+  margin-right: 10px;
+  min-width: 240px;
+  max-width: 240px;
+}
+
+.scroll-item[active="true"] {
+  border: 2px solid var(--mc-primary-color);
+}
+
+.scroll-item[active="false"] {
+  border: 2px solid var(--mc-gray-color);
+}
+
+.trade-detail-list {
+  white-space: pre-line;
+  height: 100%;
+  padding-top: 0;
+}
+
+.trade-number {
+  font-weight: 600;
+}
+
+.special-discount {
+  color: red;
+  font-size: small;
+}
+
+.pay-advance {
+  color: var(--mc-primary-color);
+  font-weight: 600;
+}
+
+.price-discount[active="true"] {
+  background-color: var(--mc-primary-color);
+  color: white;
+}
+
+.price-discount[active="false"] {
+  background-color: var(--mc-gray-color);
+  color: white;
+}

@@ -1,0 +1,54 @@
+.txt-header {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 43px;
+  color: var(--mc-text-primary-color);
+}
+
+.txt-content {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 43px;
+  color: var(--mc-text-primary-color);
+}
+
+.custom-input {
+  background: var(--mc-white-color);
+  opacity: 0.8;
+  border: 1px solid var(--mc-gray-400);
+  border-radius: 8px;
+  height: 54px;
+  font-size: 22px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.button {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 30px 0;
+}
+
+.error-msg-mnp {
+  font-family: "db_helvethaicaais_x55_regular";
+  color: #ff3300;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.progress {
+  --bs-progress-bar-bg: var(--mc-primary-color);
+  background-color: var(--mc-gray-100);
+}
+
+.modal-fade {
+  width: 100%;
+  background-color: #0000008c;
+}
+
+.modal-dialog {
+  max-width: 700px;
+}

@@ -1,0 +1,76 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>E contract</title>
+		<style>
+			@import url('<%= bootstrap %>');
+			@import url('<%= style %>');
+
+			@font-face {
+				font-family: 'helvethaicaais';
+				src: url('<%= font1 %>') format('woff');
+				font-weight: bold;
+				font-style: normal;
+			}
+
+			@font-face {
+				font-family: 'helvethaica';
+				src: url('<%= font2 %>') format('woff');
+				font-style: normal;
+				font-weight: regular;
+			}
+
+			body {
+				width: 21cm;
+				margin: 0 !important;
+				background-color: white;
+				font-family: 'helvethaica' !important;
+				font-weight: regular;
+				font-size: 15px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="page-a4">
+			<div class="logo">
+				<img src="<%= logo %>" alt="AIS LOGO" />
+			</div>
+			<div class="header">
+				<h4>ข้อตกลงรับสิทธิ์ซื้อเครื่องโทรศัพท์ราคาพิเศษ</h4>
+				<h5 class="primary">โครงการ <%= campaignName %></h5>
+			</div>
+			<div class="sub-header">
+				<p>
+					วันที่ : <span class="primary"> <%= toDay %> </span> &nbsp; ทำที่ :
+					<span class="primary"> <%= locationName %> </span>
+				</p>
+			</div>
+			<div class="divider"></div>
+			<div class="first-content">
+				<p>
+					ข้าพเจ้า <%= titleName %> <%= fullName %> เลขบัตรประจำตัวประชาชน <%= idCard %> ใช้บริการโทรศัพท์เคลื่อนที่
+					รายเดือน หมายเลข <%= mobileNumber %> ของ บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จำกัด
+					มีความประสงค์ซื้อเครื่องโทรศัพท์เคลื่อนที่จาก <%= companyProduct %> โดยได้รับส่วนลดค่าเครื่อง
+					และตกลงใช้บริการตามรายการส่งเสริมการขายที่ระบุไว้ ดังรายละเอียดต่อไปนี้
+				</p>
+			</div>
+			<ul>
+				<li>
+					เครื่องโทรศัพท์ <%= brand %> รุ่น <%= model %> สี <%= color %> ราคาปกติ <%= priceIncludeVat %> บาท
+					ส่วนลดค่าเครื่อง <%= discountIncludeVat %> บาท ราคาสุทธิ <%= netPrice %> บาท (รวม VAT)
+				</li>
+				<% if(mobileCarePackageTitle !=='ไม่สนใจ' ){ %>
+				<li><%= mobileCarePackageTitle %></li>
+				<% } %>
+				<li>ตกลงใช้บริการต่อเนื่องไม่น้อยกว่า <%= contract %> เดือน</li>
+			</ul>
+			<div class="total-net-price">
+				<p>รวมชำระเงินทั้งสิ้น <span class="primary"> <%= summaryPrice %> บาท (รวม VAT) </span></p>
+			</div>
+			<p><%- condition %></p>
+		</div>
+	</body>
+</html>

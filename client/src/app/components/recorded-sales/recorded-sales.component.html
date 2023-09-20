@@ -1,0 +1,68 @@
+<layout 
+[backUrl]="backPageUrl" 
+titlePageName="บันทึกข้อมูลการขาย" 
+[isShowFooter]="true" 
+[isShowIconCart] = "false"
+[isShowIconBack] = "false">
+
+<ng-container>
+  <div class="container-md">
+    <div class="col">
+      <div class="flex-wrap" style="text-align: center">
+          <img
+            class="icon-protection"
+            [src]="'assets/Vector.png'"
+          />
+
+        <div
+          class="success-header flex-wrap mt-2"
+          style="color: var(--mc-primary-color)"
+        >
+          <div>หมายเลข {{ mobileNo }}</div>
+          <div>ทำรายการสำเร็จและบันทึกข้อมูลการขายเรียบร้อยแล้ว</div>
+        </div>
+      </div>
+      <div
+        _ngcontent-xnc-c49=""
+        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-2"
+      >
+        <hr _ngcontent-xnc-c49="" />
+      </div>
+      <div class="d-flex">
+        <div class="col-12 align-items-center font-size-4">
+          <div class="fs-6 text-center">
+            ระบบจัดส่ง SMS
+            แจ้งรายละเอียดการทำรายการข้อตกลงและเงื่อนไขบริการโทรศัพท์เคลื่อนที่
+            ไปที่เบอร์ {{ mobileNo }}
+            <br>
+            ขอบคุณที่เลือกใช้บริการ AIS
+          </div>
+        </div>
+      </div>
+      <div
+        _ngcontent-xnc-c49=""
+        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-5"
+      >
+        <hr _ngcontent-xnc-c49="" />
+      </div>
+      <div class="d-flex align-items-center justify-content-center mt-2">
+        <div>พิมพ์เอกสารการทำธุรกรรม/สัญญาซื้อเครื่อง</div>
+      </div>
+      <div class="d-flex align-items-center justify-content-center mt-2">
+        <div class="warning" style="color: var(--mc-red-color)">
+          ( เฉพาะกรณีลูกค้าแสดงความจำนงขอเอกสารเท่านั้น !! )
+        </div>
+      </div>
+      <div class="d-flex justify-content-evenly w-100 mt-2">
+        <button class="btn printer-button">
+          <img class="icon-protection mr-3" [src]="'assets/images/Printer.png'" />
+              พิมพ์ใบเสร็จ
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<div footer-layout class="d-flex justify-content-evenly w-100">
+  <app-button-next [textButton]="textMainMenuButton" [isPrimary]="true" (click)="gotoHomePage()"></app-button-next>
+</div>
+</layout>

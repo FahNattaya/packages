@@ -1,0 +1,368 @@
+<div class="action-container" *ngIf="isLoading">
+  <app-loading></app-loading>
+</div>
+<div class="container" *ngIf="!isLoading && isCartListEmpty">
+  <div class="row">
+    <div class="col text-center">
+      <i class="bi bi-cart3 cart-icon"></i>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center fs-2" data-testid="noProductInCart">
+      ไม่มีสินค้าในตะกร้า
+    </div>
+  </div>
+</div>
+<ng-container *ngIf="!isLoading && isError">
+  <app-result-failed></app-result-failed>
+</ng-container>
+<ng-container *ngIf="!isLoading && !isCartListEmpty && !isError">
+  <div class="cart-list-container" [ngClass]="{ bordered: !isPayment }">
+    <table class="table">
+      <thead>
+        <tr [hidden]="isPayment">
+          <th scope="col">
+            <label class="checkbox" data-testid="cartListCheckbox"
+              >เลือกทั้งหมด
+              <input
+                type="checkbox"
+                [checked]="isAllProductChecked"
+                data-testid="cartListCheckboxInput"
+                (change)="onAllProductChecked($event)"
+              />
+              <i class="bi bi-check2 checkmark"></i>
+            </label>
+          </th>
+          <th scope="col" class="text-center" data-testid="lableNumber">
+            จำนวน
+          </th>
+          <th scope="col" class="text-center" data-testid="lablePrice">ราคา</th>
+          <th scope="col" class="cart-list-trash">
+            <img
+              src="assets/images/Trash.png"
+              alt="Trash"
+              data-testid="cartListTrash"
+              (click)="onConfirmDelete(true)"
+            />
+          </th>
+        </tr>
+      </thead>
+      <tbody class="cart-container">
+        <ng-container
+          *ngFor="let product of productListData; let indexProductCheck = index"
+        >
+          <tr>
+            <td>
+              <label
+                class="checkbox"
+                [attr.data-testid]="this.formatDataTestId(indexProductCheck)"
+                [hidden]="isPayment"
+              >
+                <input
+                  type="checkbox"
+                  id="productChecked"
+                  [checked]="product.productChecked"
+                  (change)="onProductChecked($event, indexProductCheck)"
+                />
+                <i class="bi bi-check2 checkmark"></i>
+              </label>
+              <div
+                class="cart-product-detail"
+                [ngClass]="{ payment: isPayment }"
+              >
+                <div class="cart-image product">
+                  <img
+                    src="{{ product.image }}"
+                    class="contain-fit-image"
+                    alt="image-product"
+                    *ngIf="product.image"
+                  />
+                  <div class="empty-image" *ngIf="!product.image">
+                    <p>ไม่มีรูปสินค้า</p>
+                  </div>
+                </div>
+                <div class="w-50">
+                  <p
+                    class="cart-title"
+                    [attr.data-testid]="
+                      'product' + indexProductCheck + '-campaignName'
+                    "
+                  >
+                    {{ product.campaignName }}
+                  </p>
+                  <ul>
+                    <li
+                      [attr.data-testid]="
+                        'product' + indexProductCheck + '-name'
+                      "
+                    >
+                      {{ product?.productName }} {{ product?.color }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </td>
+            <td class="text-center cart-product-quantity">
+              <p [attr.data-testid]="'product' + indexProductCheck + '-qty'">
+                {{ product.amount }}
+              </p>
+            </td>
+            <td class="text-center cart-product-quantity">
+              <p [attr.data-testid]="'product' + indexProductCheck + '-price'">
+                {{ product.netPrice | number : "1.2-2" }} บ.
+              </p>
+            </td>
+            <td></td>
+          </tr>
+          <tr *ngIf="(isShowImei$ | async) === 'Y'">
+            <td colspan="4">
+              <div class="imei-form">
+                <app-form-imei
+                  (onConfirmImei)="onConfirmImei($event, indexProductCheck)"
+                  [isCartPage]="true"
+                  [isSuccess]="isScanImeiSuccess"
+                  [resetForm]="resetForm"
+                ></app-form-imei>
+              </div>
+            </td>
+          </tr>
+          <ng-container *ngIf="product.trade.freegoods">
+            <tr
+              *ngFor="
+                let freeGood of product.trade.freegoods;
+                let indexFreeGood = index
+              "
+            >
+              <td>
+                <div class="cart-product-detail">
+                  <div class="cart-image goods"></div>
+                  <div class="w-50">
+                    <p class="cart-title"></p>
+                    <ul>
+                      <li
+                        [attr.data-testid]="
+                          'product-' +
+                          indexProductCheck +
+                          'freeGood' +
+                          indexFreeGood
+                        "
+                      >
+                        {{ freeGood.name }}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </td>
+              <td
+                class="text-center"
+                [attr.data-testid]="
+                  'product' +
+                  indexProductCheck +
+                  '-freeGood' +
+                  indexFreeGood +
+                  '-qty'
+                "
+              >
+                <p>{{ freeGood.qty }}</p>
+              </td>
+              <td
+                class="text-center"
+                [attr.data-testid]="
+                  'product' +
+                  indexProductCheck +
+                  '-freeGood' +
+                  indexFreeGood +
+                  '-price'
+                "
+              >
+                <p>0.00 บ.</p>
+              </td>
+              <td></td>
+            </tr>
+          </ng-container>
+          <tr *ngIf="showPackage">
+            <td>
+              <div class="cart-product-detail">
+                <div class="cart-image">
+                  <img
+                    src="assets/images/image3.png"
+                    class="contain-fit-image"
+                    [attr.data-testid]="
+                      'product' + indexProductCheck + '-packageImage'
+                    "
+                  />
+                </div>
+                <div class="w-50">
+                  <span class="d-flex align-items-center">
+                    <p
+                      hidden
+                      class="cart-title"
+                      [attr.data-testid]="
+                        'product' + indexProductCheck + '-mobileNo'
+                      "
+                    >
+                      {{ this.customer?.mobileNo }}
+                    </p>
+                    <i
+                      hidden
+                      class="bi bi-pencil-square icon-edit"
+                      [attr.data-testid]="
+                        'product' + indexProductCheck + '-editMobileNo'
+                      "
+                    ></i>
+                  </span>
+                  <ul>
+                    <li>
+                      <p
+                        class="d-flex align-items-center"
+                        [attr.data-testid]="
+                          'product' + indexProductCheck + '-packageName'
+                        "
+                      >
+                        {{ product.package }}
+                        <i
+                          class="bi bi-pencil-square icon-edit"
+                          [attr.data-testid]="
+                            'product' + indexProductCheck + '-editPackage'
+                          "
+                          [hidden]="isPayment"
+                          data-bs-toggle="offcanvas"
+                          data-bs-target="#offcanvasPackage"
+                          aria-controls="offcanvasPackage"
+                          (click)="onOpenEditCanvas(product, 'package')"
+                        ></i>
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </td>
+            <td
+              class="text-center cart-product-quantity"
+              [attr.data-testid]="
+                'product' + indexProductCheck + '-package-qty'
+              "
+            >
+              <p>1</p>
+            </td>
+            <td
+              class="text-center cart-product-quantity"
+              [attr.data-testid]="
+                'product' + indexProductCheck + '-package-price'
+              "
+            >
+              <p>0.00 บ.</p>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="cart-product-detail">
+                <div class="cart-image">
+                  <img
+                    *ngIf="product?.mobileCare?.productType === AIS_CARE_PLUS"
+                    class="contain-fit-image"
+                    src="assets/images/ais-care-plus.png"
+                  />
+                  <img
+                    *ngIf="product?.mobileCare?.productType === APPLE_CARE_PLUS"
+                    class="contain-fit-image"
+                    src="assets/images/apple-care.png"
+                  />
+                </div>
+                <div class="w-50 position-relative">
+                  <ul>
+                    <li>
+                      <div
+                        class="d-flex align-items-center"
+                        [attr.data-testid]="
+                          'product' + indexProductCheck + '-mobileCare'
+                        "
+                      >
+                        <p *ngIf="product.mobileCare?.title">
+                          แพ็คเกจ AppleCare+ for {{ product?.productName}}
+                        </p>
+                        <p *ngIf="!product.mobileCare?.title">
+                          ไม่สนใจความคุ้มครอง
+                        </p>
+                        <i
+                          class="bi bi-pencil-square icon-edit"
+                          [attr.data-testid]="
+                            'product' + indexProductCheck + '-editMobileCare'
+                          "
+                          [hidden]="isPayment"
+                          data-bs-toggle="offcanvas"
+                          data-bs-target="#offcanvasMobileCare"
+                          aria-controls="offcanvasMobileCare"
+                          (click)="onOpenEditCanvas(product, 'mobile_care')"
+                        ></i>
+                      </div>
+                    </li>
+                  </ul>
+                  <span
+                    class="ais-care-note"
+                    *ngIf="
+                      product?.mobileCare?.productType === AIS_CARE_PLUS ||
+                      product?.mobileCare?.title === 'AIS Mobile Care'
+                    "
+                    [attr.data-testid]="
+                      'product' +
+                      indexProductCheck +
+                      '-mobileCare-monthlyService'
+                    "
+                  >
+                    *ค่าบริการรายเดือน AIS Mobile Care
+                    จะเรียกเก็บรวมกับใบแจ้งค่าใช้บริการ
+                  </span>
+                </div>
+              </div>
+            </td>
+            <td
+              class="text-center cart-product-quantity vertical"
+              [attr.data-testid]="
+                'product' + indexProductCheck + '-mobileCare-qty'
+              "
+            >
+              <p>1</p>
+            </td>
+            <td
+              class="text-center cart-product-quantity vertical"
+              [attr.data-testid]="
+                'product' + indexProductCheck + '-mobileCare-price'
+              "
+            >
+              <p *ngIf="product?.mobileCare?.title !== 'AIS Mobile Care'">
+                {{ product.mobileCare?.option?.price | number : "1.2-2" }} บ.
+              </p>
+              <p *ngIf="product?.mobileCare?.title === 'AIS Mobile Care'">
+                0.00 บ.
+              </p>
+            </td>
+            <td></td>
+          </tr>
+          <tr class="product-footer">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-center cart-product-tash">
+              <img
+                [hidden]="isPayment"
+                src="assets/images/Trash.png"
+                alt="Trash"
+                data-testid="cartProductTash"
+                (click)="onConfirmDelete(false, product)"
+                style="cursor: pointer"
+              />
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+  <div class="order-summary">
+    <div data-testid="lableNetPrice">สรุปรายการสั่งซื้อ</div>
+    <div data-testid="orderNetPrice">
+      {{ totalNetPrice | number : "1.2-2" }} บ.
+    </div>
+  </div>
+</ng-container>

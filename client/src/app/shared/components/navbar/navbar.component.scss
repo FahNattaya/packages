@@ -1,0 +1,46 @@
+.bg-nav {
+  background-color: var(--mc-primary-color);
+  height: 58px;
+  z-index: 2;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.icon-back {
+  width: 14.74px;
+  height: 24.66px;
+}
+
+.icon-home {
+  width: 33px;
+  height: 40.5px;
+}
+
+.icon-cart {
+  width: 41px;
+  height: 41px;
+  margin-right: 30px;
+}
+
+.txt-title {
+  font-size: 18px;
+  color: #fff;
+}
+
+.total-product-selected {
+  position: absolute;
+  top: -5px;
+  right: 23px;
+  background-color: var(--mc-red-color);
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+}

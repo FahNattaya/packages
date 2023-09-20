@@ -1,0 +1,214 @@
+<ng-container >
+  <div *ngIf="productDetail?.mobileCare?.isBuyDeviceCare">
+    <div
+      (click)="onToggleCollapse('appleCare')"
+      data-testid="collapse-payment-1"
+    >
+      <div class="d-flex justify-content-between">
+        <p data-testid="payment-list">รายการสินค้า</p>
+        <i class="bi" [ngClass]="getIconChevron('appleCare')"></i>
+      </div>
+      <div class="row mt-2">
+        <div class="col-6">
+          <ul>
+            <li>{{ productDetail?.mobileCare?.title }}</li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <p class="text-end">{{ totalNetPrice | number: "1.2-2" }} บ.</p>
+        </div>
+      </div>
+      <div class="mt-2 order-summary">
+        <div class="row">
+          <div class="col-6"></div>
+          <div class="col-3">รวม</div>
+          <div class="col-3 text-end">
+            <p class="m-0">{{ totalNetPrice | number: "1.2-2" }} บ.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapse" [ngClass]="{ show: onCheckCollapse('appleCare') }">
+      <div class="ps-0 mx-0 my-3">เลือกช่องทางการชำระเงิน</div>
+      <div class="nav nav-tabs nav-fill px-0 my-3" role="tablist">
+        <button
+          class="button border-left col-6"
+          (click)="onChangeTab('online')"
+          data-bs-toggle="tab"
+          role="tab"
+          data-testid="onlinePayButton"
+          style="background-color: #f2f4f6"
+          disabled
+        >
+          <div class="row">
+            <div class="col-2">
+              <img
+                src="assets/images/carbon_qr-code.png"
+                alt="icon-payment-qr-code"
+                class="icon-payment-qr-code"
+                data-testid="icon-payment-qr-code"
+              />
+            </div>
+            <div class="col-10">
+              <div class="choose-payment-txt-header">
+                Online (จ่ายเต็มจำนวน)
+              </div>
+              <div class="choose-payment-txt-content">
+                พร้อมเพย์ / Rabbit Line Pay
+              </div>
+            </div>
+          </div>
+        </button>
+        <button
+          class="button border-right col-6"
+          [ngClass]="{ active: selectedTab === 'counter' }"
+          (click)="onChangeTab('counter')"
+          data-bs-toggle="tab"
+          role="tab"
+          data-testid="creditCardButton"
+        >
+          <div class="row">
+            <div class="col-2">
+              <img
+                src="assets/images/icon-payment-counter.png"
+                alt="icon-payment-couter"
+                class="icon-payment-couter"
+                data-testid="icon-payment-couter"
+                (error)="handleImageError($event)"
+              />
+            </div>
+            <div class="col-10">
+              <div class="choose-payment-txt-header">Counter (เคาน์เตอร์)</div>
+              <div class="choose-payment-txt-content">
+                เครดิตการ์ด / เงินสด (เต็มจำนวน)
+              </div>
+            </div>
+          </div>
+        </button>
+      </div>
+      <div class="my-0 mx-0">เลือกรูปแบบการชำระเงิน</div>
+      <ng-container *ngIf="selectedTab === 'counter'">
+        <ng-container
+          *ngFor="
+            let paymentMethod of allPaymentData.payments;
+            let indexPayment = index
+          "
+        >
+          <div class="payment mb-2">
+            <div class="row">
+              <div class="col-9 px-0">
+                <div class="row mx-0 py-1">
+                  <img
+                    src="assets/images/{{ paymentMethod.methodName }}.png"
+                    alt="icon-{{ paymentMethod.methodName }}-payment"
+                    class="icon-credit-payment col-4"
+                    data-testid="icon-payment-method"
+                  />
+                  <label class="choose-payment-txt-header d-flex col-8"
+                    >: {{ paymentMethod.methodNameTh }}</label
+                  >
+                </div>
+              </div>
+              <div class="col-3 px-2">
+                <div class="radio float-end">
+                  <input
+                    (click)="onPaymentMethodSelect(paymentMethod.method)"
+                    id="rdoPayment-a{{ paymentMethod.methodName }}"
+                    name="radioPaymentMethoda"
+                    type="radio"
+                    [attr.data-testid]="
+                      'rdo-payment-method-' + paymentMethod.methodName
+                    "
+                  />
+                  <label
+                    for="rdoPayment-a{{ paymentMethod.methodName }}"
+                    class="radio-label"
+                  ></label>
+                </div>
+              </div>
+            </div>
+
+            <ng-container
+              *ngIf="selectedPaymentMethod === paymentMethod.method"
+            >
+              <div class="mx-3 my-1">
+                <ng-container
+                  *ngIf="isPaymentMethodExist('fullPaid', indexPayment)"
+                >
+                  <div
+                    class="radio form-check form-check-inline px-0 mx-2 mb-2"
+                  >
+                    <input
+                      (click)="
+                        onPaymentTypeSelect('fullPaid', indexPayment);
+                        onSelectBankFullPaid(indexPayment)
+                      "
+                      class="form-check-input"
+                      id="rdoFullPaida{{ paymentMethod.method }}"
+                      name="radioPaymentTypea"
+                      type="radio"
+                      data-testid="rdo-fullpaid-type"
+                    />
+                    <label
+                      for="rdoFullPaida{{ paymentMethod.method }}"
+                      class="payment-txt-sub-content radio-label form-check-label d-flex"
+                      >เต็มจำนวน</label
+                    >
+                  </div>
+                </ng-container>
+              </div>
+              <ng-container *ngIf="selectedPaymentType === 'fullPaid'">
+                <div class="mx-3 my-1">
+                  <ng-container
+                    *ngFor="
+                      let paymentFullPaid of getPayment(
+                        'fullPaid',
+                        indexPayment
+                      );
+                      let indexFullPaid = index
+                    "
+                  >
+                    <div
+                      class="radio form-check form-check-inline px-0 mx-2 mb-2"
+                    >
+                      <input
+                        (click)="
+                          onSelectBankFullPaid(indexFullPaid);
+                          onUpdateBank(
+                            paymentFullPaid.bankDescTh,
+                            paymentFullPaid.bankDescEn,
+                            paymentFullPaid.bankAbbr
+                          )
+                        "
+                        class="form-check-input"
+                        id="rdoFullPaidBanka{{ paymentMethod.method }}{{
+                          indexFullPaid
+                        }}"
+                        name="radioPaymentBankFullPaida"
+                        type="radio"
+                        data-testid="rdo-fullpaid-bank"
+                      />
+                      <label
+                        for="rdoFullPaidBanka{{ paymentMethod.method }}{{
+                          indexFullPaid
+                        }}"
+                        class="payment-txt-sub-content radio-label form-check-label d-flex"
+                      >
+                        <img
+                          style="width: 35px"
+                          [src]="paymentFullPaid.imageUrl"
+                          alt="{{ paymentFullPaid.bankAbbr }}"
+                        />
+                      </label>
+                    </div>
+                  </ng-container>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>

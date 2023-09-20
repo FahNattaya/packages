@@ -1,0 +1,124 @@
+.list-payment,
+.list-method {
+  border: 1px solid var(--mc-gray-200);
+  background-color: var(--mc-gray-50);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.collapse-list {
+  border: none;
+  background-color: var(--mc-gray-50);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.collapse-list p {
+  margin: 0;
+}
+
+.address-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.address {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  border: 1px solid var(--mc-gray-200);
+  background-color: white;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 140ms;
+
+  &.add-address {
+    color: var(--mc-primary-color);
+    display: flex;
+  }
+
+  &.add-address:hover {
+    background-color: var(--mc-green-100);
+  }
+
+  &:has(input:checked) {
+    border: 1px solid var(--mc-primary-color);
+    background-color: var(--mc-green-100);
+  }
+
+  input[type="radio"] {
+    appearance: none;
+    display: grid;
+    place-content: center;
+    font: inherit;
+    color: inherit;
+    width: 1.15rem;
+    height: 1.15rem;
+    border: 1px solid var(--mc-gray-200);
+    border-radius: 50%;
+
+    &::before {
+      content: "\2713";
+      color: white;
+      font-size: 12px;
+    }
+
+    &:checked {
+      background-color: var(--mc-primary-color);
+    }
+  }
+
+  div > span {
+    font-weight: 100;
+  }
+}
+
+.editable {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+}
+
+.addr-phone-container {
+  display: grid;
+  grid-template-columns: auto 6fr 1fr;
+  align-items: center;
+  gap: 0.5rem;
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+
+  button,
+  input {
+    border-radius: 8px;
+  }
+
+  input {
+    padding-inline: 8px;
+  }
+
+  button {
+    background-color: var(--mc-primary-color);
+    padding-block: 0;
+    color: var(--mc-white-color);
+  }
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: none;
+  border: 1px solid var(--mc-primary-color);
+}
+
+.edit-color {
+  color: var(--mc-primary-color);
+  font-size: 21px;
+  margin-top: 4px;
+}
